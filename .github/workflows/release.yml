@@ -21,6 +21,7 @@ jobs:
           zip -r thesis-german.zip  thesis-german/
           zip -r beamer.zip         beamer/
           zip -r poster.zip         poster/
+          zip -r gannt.zip          gannt/
 
       - name: Force-update 'latest' tag
         run: |
@@ -45,6 +46,7 @@ jobs:
             | `thesis-german.zip`  | German thesis  |
             | `beamer.zip`         | Beamer presentation slides |
             | `poster.zip`         | A0 scientific poster |
+            | `gannt.zip`          | Gantt chart (landscape A4) |
 
             ## Overleaf
             Download a zip → Overleaf **New Project → Upload Project**.
@@ -56,4 +58,5 @@ jobs:
             thesis-german.zip
             beamer.zip
             poster.zip
+            gannt.zip
           make_latest: true

@@ -1,0 +1,158 @@
+% ============================================================================
+% IWES GANTT CHART TEMPLATE
+% ============================================================================
+% Compiler: LuaLaTeX or XeLaTeX (for Rotis font); pdfLaTeX also works (fallback)
+% Output:   Single landscape A4 page
+% ============================================================================
+
+\documentclass[a4paper,landscape]{article}
+
+\usepackage{geometry}
+\geometry{a4paper, landscape, left=1.5cm, right=1.5cm, top=1.5cm, bottom=1.5cm}
+
+% ============================================================================
+% PARAMETERS — edit this section for each new project
+% ============================================================================
+
+\newcommand{\ProjectTitle}{Project Title}
+
+% Number of months (must match the number of \gantttitle entries below)
+\newcommand{\TimeplanNumMonths}{6}
+
+% Month column headers — one \gantttitle per month, span = 1
+\newcommand{\TimeplanMonths}{%
+    \gantttitle{Jan 25}{1}%
+    \gantttitle{Feb 25}{1}%
+    \gantttitle{Mär 25}{1}%
+    \gantttitle{Apr 25}{1}%
+    \gantttitle{Mai 25}{1}%
+    \gantttitle{Jun 25}{1}%
+}
+
+% ============================================================================
+% HOW TO EDIT THE CHART
+% ─────────────────────────────────────────────────────────────────────────────
+% Add tasks with:
+%   \ganttbar{Task label}{start month}{end month} \\
+%
+% Add milestones with:
+%   \ganttmilestone{Milestone label}{month} \\
+%
+% Month numbers map to the column headers above (1 = first column, etc.)
+%
+% Remove the trailing \\ from the very last row.
+% ============================================================================
+
+% ============================================================================
+% PACKAGES
+% ============================================================================
+
+\usepackage{pgfgantt}
+\usepackage{xcolor}
+\usepackage{iftex}
+
+% ============================================================================
+% FONT CONFIGURATION
+% ============================================================================
+
+\ifluatex
+    \usepackage{fontspec}
+    \IfFileExists{./Rotis/RotisSansSerifStd-Regular.otf}{%
+        \setsansfont{RotisSansSerifStd}[
+            Path = ./Rotis/,
+            Extension = .otf,
+            UprightFont = *-Regular,
+            BoldFont = *-Bold,
+            ItalicFont = *-Italic,
+        ]%
+    }{%
+        \setsansfont{TeX Gyre Heros}%
+    }
+\else\ifxetex
+    \usepackage{fontspec}
+    \IfFileExists{./Rotis/RotisSansSerifStd-Regular.otf}{%
+        \setsansfont{RotisSansSerifStd}[
+            Path = ./Rotis/,
+            Extension = .otf,
+            UprightFont = *-Regular,
+            BoldFont = *-Bold,
+            ItalicFont = *-Italic,
+        ]%
+    }{%
+        \setsansfont{TeX Gyre Heros}%
+    }
+\else
+    \usepackage[T1]{fontenc}
+    \usepackage{tgheros}
+\fi\fi
+
+\renewcommand{\familydefault}{\sfdefault}
+
+% ============================================================================
+% COLORS
+% ============================================================================
+
+\definecolor{luhblue}{RGB}{0,80,155}
+
+% ============================================================================
+% DOCUMENT
+% ============================================================================
+
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{center}
+
+{\large\bfseries\color{luhblue} \ProjectTitle}
+
+\vspace{0.4cm}
+
+\begin{ganttchart}[
+    x unit         = 1.8cm,
+    y unit title   = 0.55cm,
+    y unit chart   = 0.5cm,
+    hgrid,
+    vgrid,
+    bar height     = 0.6,
+    bar top shift  = 0.2,
+    title height   = 1,
+    bar/.append style       = {fill=luhblue!70, rounded corners=1pt},
+    milestone/.append style = {fill=red!70!black},
+    milestone left shift    =  0.35,
+    milestone right shift   = -0.35,
+    milestone height        =  0.6,
+    milestone top shift     =  0.2,
+    milestone label font    = \scriptsize\bfseries,
+    title label font        = \small\bfseries,
+    bar label font          = \small,
+    group label font        = \small\bfseries,
+]{1}{\TimeplanNumMonths}
+
+% --- Month headers ---
+\TimeplanMonths \\
+
+% ============================================================================
+% TASKS AND MILESTONES — edit below
+% ============================================================================
+
+\ganttmilestone[
+    milestone left shift=-0.15,
+    milestone right shift=-0.85
+]{Start}{1} \\
+\ganttbar{Task 1}{1}{2} \\
+\ganttbar{Task 2}{2}{3} \\
+\ganttbar{Task 3}{3}{5} \\
+\ganttmilestone{Midterm review}{3} \\
+\ganttbar{Task 4}{4}{5} \\
+\ganttbar{Task 5}{5}{6} \\
+\ganttmilestone[
+    milestone left shift=-0.15,
+    milestone right shift=-0.85
+]{Submission}{6}
+
+\end{ganttchart}
+
+\end{center}
+
+\end{document}
