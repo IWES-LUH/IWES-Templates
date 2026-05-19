@@ -5,7 +5,7 @@ Leibniz University Hannover.
 
 ## Templates
 
-| Thesis (English) | Thesis (Deutsch) | Beamer | PowerPoint | Poster | Gantt Chart |
+| Thesis (English) | Thesis (Deutsch) |  PowerPoint |Beamer | Poster | Gantt Chart |
 |:---:|:---:|:---:|:---:|:---:|:---:|
 | [![thesis-english](thesis-english/preview.png)](../../releases/latest/download/thesis-english.zip) | [![thesis-german](thesis-german/preview.png)](../../releases/latest/download/thesis-german.zip) | [![powerpoint](powerpoint/preview.png)](../../releases/latest/download/powerpoint.zip) | [![beamer](beamer/preview.png)](../../releases/latest/download/beamer.zip) | [![poster](poster/preview.png)](../../releases/latest/download/poster.zip) | [![gannt](gannt/preview.png)](../../releases/latest/download/gannt.zip) |
 | [thesis-english.zip](../../releases/latest/download/thesis-english.zip) | [thesis-german.zip](../../releases/latest/download/thesis-german.zip) | [beamer.zip](../../releases/latest/download/beamer.zip) | [powerpoint.zip](../../releases/latest/download/powerpoint.zip) ¹ | [poster.zip](../../releases/latest/download/poster.zip) | [gannt.zip](../../releases/latest/download/gannt.zip) |
