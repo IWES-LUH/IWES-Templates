@@ -3,21 +3,33 @@
 % POSTER CONTENT - LUH STYLE (True Grid System)
 % ============================================================================
 
+% ============================================================================
+% POSTER INFO — edit this section for each new poster
+% ============================================================================
+
+\newcommand{\AuthorName}{Basem Rajjoub}
+\newcommand{\AuthorAffiliation}{IWES, LUH}
+\newcommand{\PosterTitle}{Poster Title}
+\newcommand{\PosterSubtitle}{Optional Subtitle}
+\newcommand{\WebsiteDisplay}{www.iwes.uni-hannover.de}
+\newcommand{\WebsiteURL}{https://www.iwes.uni-hannover.de}
+
+% ============================================================================
+% LAYOUT CONFIGURATION — adjust if needed
+% ============================================================================
+
 % --- Paper size ---
 \newcommand{\PosterSize}{a0paper}
 \newcommand{\PosterOrientation}{portrait}
 
-% --- Grid Configuration ---
-% Margins
+% --- Grid ---
 \newcommand{\MarginLeft}{4cm}
 \newcommand{\MarginRight}{4cm}
 \newcommand{\MarginTop}{4cm}
 \newcommand{\MarginBottom}{4cm}
-
-% Column gap
 \newcommand{\ColumnGap}{4cm}
 
-% Row heights
+% --- Row heights ---
 \newcommand{\LogoRowHeight}{8cm}
 \newcommand{\TitleRowHeight}{14cm}
 \newcommand{\FooterRowHeight}{6cm}
@@ -40,7 +52,7 @@
 \posterlogos
 
 % --- TITLE ---
-\postertitle{Dies ist eine Headline}{Und eine Subheadline}
+\postertitle{\PosterTitle}{\PosterSubtitle}
 
 % --- COLUMN 1 ---
 \postercolumn{1}{%
@@ -67,6 +79,6 @@
 }
 
 % --- FOOTER ---
-\posterfooter{Institut f\"ur Beispiel}{Pro. Dr. Ing. Berta Beispiel}{www.beispiel.uni-hannover.de}{https://www.beispiel.uni-hannover.de}
+\posterfooter{\AuthorAffiliation}{\AuthorName}{\WebsiteDisplay}{\WebsiteURL}
 
 \end{document}

@@ -16,6 +16,13 @@ Place the following `.otf` files in this folder:
 | `RotisSansSerifStd-Italic.otf` | Italic |
 | `RotisSansSerifStd-LightIt.otf` | Light Italic |
 
+## Compiler requirement
+
+Rotis fonts are OpenType (`.otf`) files and require a Unicode-aware compiler.
+You **must** use **LuaLaTeX** or **XeLaTeX** — `pdflatex` cannot load these fonts.
+
+In Overleaf: go to **Menu → Compiler** and select **LuaLaTeX** or **XeLaTeX**.
+
 ## Without fonts
 
 The template will compile and fall back to a standard font (Latin Modern).

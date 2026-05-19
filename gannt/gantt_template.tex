@@ -1,158 +1,142 @@
 % ============================================================================
 % IWES GANTT CHART TEMPLATE
 % ============================================================================
-% Compiler: LuaLaTeX or XeLaTeX (for Rotis font); pdfLaTeX also works (fallback)
-% Output:   Single landscape A4 page
+% Compile: pdflatex gantt_template  (or lualatex / xelatex)
+% Output:  Single landscape A4 page
 % ============================================================================
 
 \documentclass[a4paper,landscape]{article}
 
-\usepackage{geometry}
-\geometry{a4paper, landscape, left=1.5cm, right=1.5cm, top=1.5cm, bottom=1.5cm}
+% Wide left margin (5 cm) holds task labels; \hspace*{-3.9cm} before the chart
+% cancels the label-width so the canvas aligns to the text margin on the left
+% and fills to the right margin (29.7 - 5 - 0.9 = 23.8 cm canvas width).
+\usepackage[a4paper, landscape, left=5cm, right=0.9cm, top=1.2cm, bottom=1.2cm]{geometry}
 
 % ============================================================================
 % PARAMETERS — edit this section for each new project
 % ============================================================================
 
-\newcommand{\ProjectTitle}{Project Title}
-
-% Number of months (must match the number of \gantttitle entries below)
-\newcommand{\TimeplanNumMonths}{6}
-
-% Month column headers — one \gantttitle per month, span = 1
-\newcommand{\TimeplanMonths}{%
-    \gantttitle{Jan 25}{1}%
-    \gantttitle{Feb 25}{1}%
-    \gantttitle{Mär 25}{1}%
-    \gantttitle{Apr 25}{1}%
-    \gantttitle{Mai 25}{1}%
-    \gantttitle{Jun 25}{1}%
-}
+\newcommand{\ProjectTitle}{Master Thesis — 5-Month Work Plan}
 
 % ============================================================================
 % HOW TO EDIT THE CHART
 % ─────────────────────────────────────────────────────────────────────────────
-% Add tasks with:
-%   \ganttbar{Task label}{start month}{end month} \\
+% Time units are weeks (22 weeks ≈ 5 months).
+% Adjust the month titles in the HEADER ROWS section to your actual dates.
 %
-% Add milestones with:
-%   \ganttmilestone{Milestone label}{month} \\
-%
-% Month numbers map to the column headers above (1 = first column, etc.)
+% Add a task:      \ganttbar{Label}{start week}{end week} \\
+% Add a milestone: \ganttmilestone{Label}{week} \\
+% Add a group:     \ganttgroup{Label}{start week}{end week} \\
 %
 % Remove the trailing \\ from the very last row.
 % ============================================================================
 
-% ============================================================================
-% PACKAGES
-% ============================================================================
-
 \usepackage{pgfgantt}
 \usepackage{xcolor}
-\usepackage{iftex}
-
-% ============================================================================
-% FONT CONFIGURATION
-% ============================================================================
-
-\ifluatex
-    \usepackage{fontspec}
-    \IfFileExists{./Rotis/RotisSansSerifStd-Regular.otf}{%
-        \setsansfont{RotisSansSerifStd}[
-            Path = ./Rotis/,
-            Extension = .otf,
-            UprightFont = *-Regular,
-            BoldFont = *-Bold,
-            ItalicFont = *-Italic,
-        ]%
-    }{%
-        \setsansfont{TeX Gyre Heros}%
-    }
-\else\ifxetex
-    \usepackage{fontspec}
-    \IfFileExists{./Rotis/RotisSansSerifStd-Regular.otf}{%
-        \setsansfont{RotisSansSerifStd}[
-            Path = ./Rotis/,
-            Extension = .otf,
-            UprightFont = *-Regular,
-            BoldFont = *-Bold,
-            ItalicFont = *-Italic,
-        ]%
-    }{%
-        \setsansfont{TeX Gyre Heros}%
-    }
-\else
-    \usepackage[T1]{fontenc}
-    \usepackage{tgheros}
-\fi\fi
-
+\usepackage[T1]{fontenc}
+\usepackage{tgheros}
 \renewcommand{\familydefault}{\sfdefault}
 
-% ============================================================================
-% COLORS
-% ============================================================================
-
-\definecolor{luhblue}{RGB}{0,80,155}
-
-% ============================================================================
-% DOCUMENT
-% ============================================================================
+\definecolor{mainblue}{RGB}{23,81,157}
 
 \pagestyle{empty}
 
 \begin{document}
 
-\begin{center}
+{\centering\large\bfseries\color{mainblue}\ProjectTitle\par}
 
-{\large\bfseries\color{luhblue} \ProjectTitle}
+\vspace{0.25cm}
 
-\vspace{0.4cm}
-
+% \hspace*{-3.9cm} shifts the canvas left by the label area (3.7 cm text + 0.2 cm gap)
+% so the chart bars start exactly at the text margin rather than 3.9 cm to its right.
+\noindent\hspace*{-3.9cm}%
 \begin{ganttchart}[
-    x unit         = 1.8cm,
-    y unit title   = 0.55cm,
-    y unit chart   = 0.5cm,
-    hgrid,
-    vgrid,
-    bar height     = 0.6,
-    bar top shift  = 0.2,
-    title height   = 1,
-    bar/.append style       = {fill=luhblue!70, rounded corners=1pt},
-    milestone/.append style = {fill=red!70!black},
-    milestone left shift    =  0.35,
-    milestone right shift   = -0.35,
-    milestone height        =  0.6,
-    milestone top shift     =  0.2,
-    milestone label font    = \scriptsize\bfseries,
-    title label font        = \small\bfseries,
-    bar label font          = \small,
-    group label font        = \small\bfseries,
-]{1}{\TimeplanNumMonths}
+    % ── Sizing ───────────────────────────────────────────────────────────────
+    % Canvas: 22 × 1.08 cm = 23.76 cm ≈ available 23.8 cm (29.7 - 5 - 0.9).
+    % Labels: 3.7 cm wide + 0.2 cm gap, extending into the 5 cm left margin.
+    x unit          = 1.08cm,
+    y unit title    = 0.60cm,
+    y unit chart    = 0.73cm,
+    % ── Grid ─────────────────────────────────────────────────────────────────
+    hgrid           = {draw=gray!30, line width=0.4pt},
+    vgrid           = {*3{draw=gray!20, line width=0.4pt},
+                       {draw=mainblue!40, line width=0.7pt},
+                       *4{draw=gray!20, line width=0.4pt},
+                       {draw=mainblue!40, line width=0.7pt},
+                       *3{draw=gray!20, line width=0.4pt},
+                       {draw=mainblue!40, line width=0.7pt},
+                       *4{draw=gray!20, line width=0.4pt},
+                       {draw=mainblue!40, line width=0.7pt},
+                       *3{draw=gray!20, line width=0.4pt},
+                       {draw=gray!20, line width=0.4pt}},
+    % ── Title bar ────────────────────────────────────────────────────────────
+    title height    = 1,
+    title/.append style        = {fill=mainblue!12, draw=mainblue!30, line width=0.5pt},
+    title label font           = \small\bfseries\color{mainblue},
+    title label node/.append style = {below=1pt},
+    % ── Bars ─────────────────────────────────────────────────────────────────
+    bar height      = 0.55,
+    bar top shift   = 0.225,
+    bar/.append style          = {fill=mainblue!65, rounded corners=1.5pt, draw=none},
+    % ── Groups ───────────────────────────────────────────────────────────────
+    group/.append style        = {fill=mainblue, draw=none},
+    group left shift           = 0,
+    group right shift          = 0,
+    group height               = 0.4,
+    group peaks height         = 0.18,
+    group peaks tip position   = 0,
+    % ── Milestones ───────────────────────────────────────────────────────────
+    milestone/.append style    = {fill=red!75!black, shape=diamond, scale=0.9, draw=none},
+    milestone left shift       = 0.5,
+    milestone right shift      = -0.5,
+    milestone height           = 0.55,
+    milestone top shift        = 0.225,
+    % ── Labels ───────────────────────────────────────────────────────────────
+    bar label font             = \small,
+    bar label node/.append style       = {text width=3.7cm, align=right, left=0.2cm},
+    group label font           = \small\bfseries,
+    group label node/.append style     = {text width=3.7cm, align=right, left=0.2cm},
+    milestone label font       = \small\itshape,
+    milestone label node/.append style = {text width=3.7cm, align=right, left=0.2cm},
+]{1}{22}
 
-% --- Month headers ---
-\TimeplanMonths \\
+% ── HEADER ROWS ──────────────────────────────────────────────────────────────
+\gantttitle{February}{4}\gantttitle{March}{5}\gantttitle{April}{4}%
+\gantttitle{May}{5}\gantttitle{June}{4} \\
+\gantttitlelist{1,...,22}{1} \\
 
-% ============================================================================
-% TASKS AND MILESTONES — edit below
-% ============================================================================
+% ── PHASE 1 ──────────────────────────────────────────────────────────────────
+\ganttgroup{Phase 1: Literature \& Planning}{1}{7} \\
+\ganttbar{Literature search \& review}{1}{5} \\
+\ganttbar{Problem definition \& scope}{4}{7} \\
+\ganttmilestone{Research plan agreed with supervisor}{7} \\
 
-\ganttmilestone[
-    milestone left shift=-0.15,
-    milestone right shift=-0.85
-]{Start}{1} \\
-\ganttbar{Task 1}{1}{2} \\
-\ganttbar{Task 2}{2}{3} \\
-\ganttbar{Task 3}{3}{5} \\
-\ganttmilestone{Midterm review}{3} \\
-\ganttbar{Task 4}{4}{5} \\
-\ganttbar{Task 5}{5}{6} \\
-\ganttmilestone[
-    milestone left shift=-0.15,
-    milestone right shift=-0.85
-]{Submission}{6}
+% ── PHASE 2 ──────────────────────────────────────────────────────────────────
+\ganttgroup{Phase 2: Concept \& Design}{6}{11} \\
+\ganttbar{Conceptual design}{6}{9} \\
+\ganttbar{Simulation / tool setup}{8}{11} \\
+\ganttmilestone{Design review with supervisor}{10} \\
+
+% ── PHASE 3 ──────────────────────────────────────────────────────────────────
+\ganttgroup{Phase 3: Implementation}{10}{16} \\
+\ganttbar{Core development}{10}{15} \\
+\ganttbar{Experiments \& data collection}{12}{16} \\
+\ganttmilestone{Implementation complete}{16} \\
+
+% ── PHASE 4 ──────────────────────────────────────────────────────────────────
+\ganttgroup{Phase 4: Analysis \& Evaluation}{15}{20} \\
+\ganttbar{Results analysis}{15}{18} \\
+\ganttbar{Validation \& comparison}{17}{20} \\
+\ganttmilestone{Analysis complete}{20} \\
+
+% ── PHASE 5 ──────────────────────────────────────────────────────────────────
+\ganttgroup{Phase 5: Thesis Writing}{14}{22} \\
+\ganttbar{Introduction \& Background}{14}{17} \\
+\ganttbar{Methodology \& Implementation}{17}{20} \\
+\ganttbar{Results, Discussion \& Conclusion}{18}{22} \\
+\ganttbar{Abstract, formatting \& proofreading}{21}{22} \\
+\ganttmilestone{Submission}{22}
 
 \end{ganttchart}
-
-\end{center}
 
 \end{document}

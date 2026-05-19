@@ -51,7 +51,7 @@
 
 \ifluatex
     \usepackage{fontspec}
-    \IfFontExistsTF{RotisSansSerifStd-Regular.otf}{%
+    \IfFileExists{./Rotis/RotisSansSerifStd-Regular.otf}{%
         \setmainfont{RotisSansSerifStd}[
             Path=./Rotis/, Extension=.otf,
             UprightFont=*-Regular, BoldFont=*-Bold,
@@ -62,10 +62,10 @@
             UprightFont=*-Regular, BoldFont=*-Bold,
             ItalicFont=*-Italic, BoldItalicFont=*-Bold
         ]
-    }{\usepackage{tgheros}\renewcommand{\familydefault}{\sfdefault}}
+    }{\setsansfont{TeX Gyre Heros}\renewcommand{\familydefault}{\sfdefault}}
 \else\ifxetex
     \usepackage{fontspec}
-    \IfFontExistsTF{RotisSansSerifStd-Regular.otf}{%
+    \IfFileExists{./Rotis/RotisSansSerifStd-Regular.otf}{%
         \setmainfont{RotisSansSerifStd}[
             Path=./Rotis/, Extension=.otf,
             UprightFont=*-Regular, BoldFont=*-Bold,
@@ -76,7 +76,7 @@
             UprightFont=*-Regular, BoldFont=*-Bold,
             ItalicFont=*-Italic, BoldItalicFont=*-Bold
         ]
-    }{\usepackage{tgheros}\renewcommand{\familydefault}{\sfdefault}}
+    }{\setsansfont{TeX Gyre Heros}\renewcommand{\familydefault}{\sfdefault}}
 \else
     \usepackage[T1]{fontenc}
     \usepackage{tgheros}

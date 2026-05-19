@@ -21,19 +21,7 @@ We recommend using the **[LUH Overleaf service](https://tex.cloud.uni-hannover.d
 
 Further instructions and usage notes are provided directly inside the template files.
 
-## Building locally
-
-All templates require **LuaLaTeX** (recommended) or XeLaTeX.
-
-| Template | Command |
-|---|---|
-| thesis-english | `cd thesis-english && lualatex 00_main && biber 00_main && lualatex 00_main && lualatex 00_main` |
-| thesis-german | `cd thesis-german && lualatex 00_main && biber 00_main && lualatex 00_main && lualatex 00_main` |
-| beamer | `cd beamer && lualatex 00_main` |
-| poster | `cd poster && lualatex 01_content` |
-| gannt | `cd gannt && lualatex gantt_template` |
-
-The thesis templates need three LuaLaTeX passes (plus one Biber pass) to resolve cross-references and the bibliography.
+New to LaTeX? The **[Overleaf LaTeX tutorials](https://www.overleaf.com/learn/latex/Tutorials)** cover everything from basic documents to figures, tables, and references.
 
 ## Fonts
 

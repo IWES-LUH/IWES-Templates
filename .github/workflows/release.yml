@@ -52,7 +52,8 @@ jobs:
             Download a zip → Overleaf **New Project → Upload Project**.
 
             > **Fonts:** Rotis Sans Serif Std is not included (commercial license).
-            > See `FONTS.md` in the `font/` or `Rotis/` folder of each template.
+            > See `FONTS.md` in the `font/` or `Rotis/` folder of each template (thesis, beamer, poster).
+            > The Gantt chart template uses standard fonts and has no font dependencies.
           files: |
             thesis-english.zip
             thesis-german.zip
