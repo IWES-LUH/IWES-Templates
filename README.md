@@ -8,9 +8,8 @@ Leibniz University Hannover.
 | Thesis (English) | Thesis (Deutsch) |  PowerPoint |Beamer | Poster | Gantt Chart |
 |:---:|:---:|:---:|:---:|:---:|:---:|
 | [![thesis-english](thesis-english/preview.png)](../../releases/latest/download/thesis-english.zip) | [![thesis-german](thesis-german/preview.png)](../../releases/latest/download/thesis-german.zip) | [![powerpoint](powerpoint/preview.png)](../../releases/latest/download/powerpoint.zip) | [![beamer](beamer/preview.png)](../../releases/latest/download/beamer.zip) | [![poster](poster/preview.png)](../../releases/latest/download/poster.zip) | [![gannt](gannt/preview.png)](../../releases/latest/download/gannt.zip) |
-| [thesis-english.zip](../../releases/latest/download/thesis-english.zip) | [thesis-german.zip](../../releases/latest/download/thesis-german.zip) | [beamer.zip](../../releases/latest/download/beamer.zip) | [powerpoint.zip](../../releases/latest/download/powerpoint.zip) ¹ | [poster.zip](../../releases/latest/download/poster.zip) | [gannt.zip](../../releases/latest/download/gannt.zip) |
+| [thesis-english.zip](../../releases/latest/download/thesis-english.zip) | [thesis-german.zip](../../releases/latest/download/thesis-german.zip) | [beamer.zip](../../releases/latest/download/beamer.zip) | [powerpoint.zip](../../releases/latest/download/powerpoint.zip) | [poster.zip](../../releases/latest/download/poster.zip) | [gannt.zip](../../releases/latest/download/gannt.zip) |
 
-¹ Includes Arial (no license needed) and Rotis variants.
 
 ## Getting Started
 
@@ -31,6 +30,13 @@ Templates can use **Rotis Sans Serif Std** (commercial license, not included).
 The template compiles fine without it using a fallback font.
 If you have the fonts, place the `.otf` files in the `font/` or `Rotis/` folder — see `FONTS.md` there.
 Rotis requires a Unicode-aware compiler: **LuaLaTeX** or **XeLaTeX** (not pdflatex).
+
+## LUH Corporate Design
+
+Official LUH templates and brand assets are available through the university's corporate design portal:
+
+- **[LUH Templates & Downloads](https://www.corporate.uni-hannover.de/en/vorlagen)** — all official templates (Word, PowerPoint, letterhead, etc.)
+- **[LUH Presentation Templates](https://www.corporate.uni-hannover.de/vorlagen/praesentationen-und-videohintergruende)** — official PowerPoint slides and video backgrounds
 
 ## License
 
