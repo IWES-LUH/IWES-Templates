@@ -1,0 +1,308 @@
+%!TEX root = 00_main.tex
+%!TEX program = lualatex
+% ============================================================================
+% BEAMER TEMPLATE - DO NOT MODIFY
+% ============================================================================
+% This file contains all template logic, packages, and theme configuration.
+% Only modify 00_main.tex for presentation content.
+%
+% COMPILER: LuaLaTeX (preferred), XeLaTeX, or pdfLaTeX (fallback fonts)
+% ============================================================================
+
+% ============================================================================
+% DEFAULT TEMPLATE SETTINGS (rarely need to change)
+% ============================================================================
+
+% --- Logo Settings ---
+\newcommand{\LogoLeftFile}{02-IWES-Logo.pdf}
+\newcommand{\LogoRightFile}{01-LUH-Logo.pdf}
+\newcommand{\LogoHeight}{0.5cm}
+\newcommand{\TitleLogoHeight}{1.2cm}
+
+% --- Title Page Background Image ---
+\newcommand{\TitleBackgroundImage}{background.png}
+\newcommand{\TitleBackgroundHeight}{0.5\paperheight}
+
+% --- Colors (RGB values, 0-1 scale) ---
+\newcommand{\MainBlueR}{0.090}              % 23/255
+\newcommand{\MainBlueG}{0.318}              % 81/255
+\newcommand{\MainBlueB}{0.616}              % 157/255
+\newcommand{\FooterGrayR}{0.8}
+\newcommand{\FooterGrayG}{0.8}
+\newcommand{\FooterGrayB}{0.8}
+\newcommand{\FooterAccentR}{0.6}
+\newcommand{\FooterAccentG}{0.8}
+\newcommand{\FooterAccentB}{0.2}
+
+% --- Footer Settings ---
+\newcommand{\FooterBarHeight}{0.5cm}
+\newcommand{\FooterAccentWidth}{1cm}
+\newcommand{\FooterAccentHeight}{0.1cm}
+
+% --- Frame Content Margins/Padding ---
+\newcommand{\FrameMarginLeft}{1cm}
+\newcommand{\FrameMarginRight}{1cm}
+\newcommand{\FrameTopPadding}{0.5cm}
+\newcommand{\FrameBottomPadding}{0.5cm}
+
+% --- Font Size Settings ---
+\newcommand{\BaseFontSize}{11pt}
+\newcommand{\TitleFontSize}{\Huge}
+\newcommand{\SubtitleFontSize}{\large}
+\newcommand{\AuthorFontSize}{\large}
+\newcommand{\DateFontSize}{\normalsize}
+\newcommand{\FrameTitleSize}{\large}
+\newcommand{\FooterFontSize}{\tiny}
+
+% --- Font Settings (XeLaTeX) ---
+% Main font options: "Rotis Sans Serif Std", "Arial", "Helvetica Neue", etc.
+\newcommand{\MainFont}{Rotis Sans Serif Std}
+\newcommand{\MonoFont}{Consolas}    % For code listings
+
+% ============================================================================
+% DOCUMENT CLASS
+% ============================================================================
+
+\documentclass[aspectratio=169, \BaseFontSize]{beamer}
+
+% ============================================================================
+% PACKAGES
+% ============================================================================
+
+% Note: With XeLaTeX, we don't need inputenc/fontenc
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{hyperref}               % Links (internal and external)
+\usepackage{attachfile2}            % Embed files in PDF
+\usepackage{listings}               % Code listings
+\usepackage{multimedia}             % Video embedding
+\usepackage{qrcode}                 % QR code generation
+\usepackage{pgfgantt}               % Gantt charts
+
+% --- Font Configuration ---
+% Detects compiler and uses appropriate font setup:
+%   - LuaLaTeX/XeLaTeX: fontspec with Rotis (falls back to TeX Gyre Heros if missing)
+%   - pdfLaTeX: TeX Gyre Heros (Helvetica clone)
+
+\usepackage{iftex}  % Provides \ifluatex, \ifxetex, \ifpdftex
+
+\ifluatex
+    % LuaLaTeX configuration
+    \usepackage{fontspec}
+    \IfFileExists{./Rotis/RotisSansSerifStd-Regular.otf}{%
+        % Rotis font found - use it
+        \setsansfont{RotisSansSerifStd}[
+            Path = ./Rotis/,
+            Extension = .otf,
+            UprightFont = *-Regular,
+            BoldFont = *-Bold,
+            ItalicFont = *-Italic,
+            BoldItalicFont = *-Bold,
+        ]
+    }{%
+        % Rotis not found - use TeX Gyre Heros (Helvetica clone)
+        \setsansfont{TeX Gyre Heros}
+    }
+    \setmonofont{Consolas}[Scale=0.9]
+\else\ifxetex
+    % XeLaTeX configuration
+    \usepackage{fontspec}
+    \IfFileExists{./Rotis/RotisSansSerifStd-Regular.otf}{%
+        \setsansfont{RotisSansSerifStd}[
+            Path = ./Rotis/,
+            Extension = .otf,
+            UprightFont = *-Regular,
+            BoldFont = *-Bold,
+            ItalicFont = *-Italic,
+            BoldItalicFont = *-Bold,
+        ]
+    }{%
+        \setsansfont{TeX Gyre Heros}
+    }
+    \setmonofont{Consolas}[Scale=0.9]
+\else
+    % pdfLaTeX configuration - use standard packages
+    \usepackage[T1]{fontenc}
+    \usepackage{tgheros}        % TeX Gyre Heros (Helvetica clone)
+    \usepackage[scaled=0.9]{beramono}  % Bera Mono for code
+\fi\fi
+
+\renewcommand{\familydefault}{\sfdefault}
+
+% ============================================================================
+% COLOR DEFINITIONS
+% ============================================================================
+
+\definecolor{mainblue}{rgb}{\MainBlueR,\MainBlueG,\MainBlueB}
+\definecolor{footergray}{rgb}{\FooterGrayR,\FooterGrayG,\FooterGrayB}
+\definecolor{footeraccent}{rgb}{\FooterAccentR,\FooterAccentG,\FooterAccentB}
+
+% Configure hyperlinks
+\hypersetup{
+    colorlinks=true,
+    linkcolor=mainblue,
+    urlcolor=mainblue,
+    citecolor=mainblue
+}
+
+% --- Code Listings Configuration ---
+\lstdefinestyle{default}{
+    basicstyle=\ttfamily\scriptsize,
+    keywordstyle=\color{mainblue}\bfseries,
+    commentstyle=\color{gray}\itshape,
+    stringstyle=\color{red!70!black},
+    numberstyle=\tiny\color{gray},
+    numbers=left,
+    numbersep=5pt,
+    frame=single,
+    framerule=0.5pt,
+    rulecolor=\color{gray},
+    backgroundcolor=\color{gray!5},
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=4,
+    showstringspaces=false,
+    captionpos=b
+}
+\lstdefinestyle{terminal}{
+    basicstyle=\ttfamily\scriptsize\color{white},
+    backgroundcolor=\color{black!90},
+    frame=single,
+    framerule=0pt,
+    numbers=none,
+    breaklines=true
+}
+\lstset{style=default}
+
+% ============================================================================
+% BEAMER THEME CONFIGURATION
+% ============================================================================
+
+\usetheme{default}
+\usecolortheme{default}
+
+% Remove navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+% Set colors
+\setbeamercolor{title}{fg=mainblue}
+\setbeamercolor{frametitle}{fg=mainblue}
+\setbeamercolor{structure}{fg=mainblue}
+\setbeamercolor{itemize item}{fg=mainblue}
+\setbeamercolor{itemize subitem}{fg=mainblue}
+\setbeamercolor{enumerate item}{fg=mainblue}
+\setbeamercolor{enumerate subitem}{fg=mainblue}
+
+% Background
+\setbeamercolor{background canvas}{bg=white}
+
+% Bullet styles
+\setbeamertemplate{itemize item}{\textbullet}
+\setbeamertemplate{itemize subitem}{--}
+\setbeamertemplate{enumerate items}[default]
+
+% Frame content margins
+\setbeamersize{
+    text margin left=\FrameMarginLeft,
+    text margin right=\FrameMarginRight
+}
+
+% ============================================================================
+% CUSTOM HEADER (HEADLINE) WITH LOGOS
+% ============================================================================
+
+\setbeamertemplate{headline}{%
+    \begin{tikzpicture}[remember picture, overlay]
+        % Left logo
+        \node[anchor=north west, inner sep=0.3cm] at (current page.north west) {%
+            \includegraphics[height=\LogoHeight]{\LogoLeftFile}%
+        };
+        % Right logo
+        \node[anchor=north east, inner sep=0.3cm] at (current page.north east) {%
+            \includegraphics[height=\LogoHeight]{\LogoRightFile}%
+        };
+    \end{tikzpicture}%
+    \vspace{\FrameTopPadding}%
+}
+
+% ============================================================================
+% CUSTOM FOOTER (FOOTLINE) WITH GRAY BAR AND ACCENT
+% ============================================================================
+
+\setbeamertemplate{footline}{%
+    \vspace{\FrameBottomPadding}%
+    \begin{tikzpicture}[remember picture, overlay]
+        % Gray bar background
+        \fill[footergray] (current page.south west) rectangle
+            ([yshift=\FooterBarHeight]current page.south east);
+        % Author name and date (left)
+        \node[anchor=south west, inner sep=0.15cm, text=black, font=\FooterFontSize]
+            at (current page.south west) {%
+                \AuthorName{} \textbar{} \PresentationDate%
+            };
+        % Page number (right)
+        \node[anchor=south east, inner sep=0.15cm, text=black, font=\FooterFontSize]
+            at ([xshift=-0.5cm]current page.south east) {%
+                \insertframenumber{}/\inserttotalframenumber%
+            };
+        % Accent rectangle (aligned with right logo)
+        \fill[footeraccent] ([xshift=-0.3cm-\FooterAccentWidth, yshift=\FooterBarHeight]current page.south east) rectangle
+            ([xshift=-0.3cm, yshift=\FooterBarHeight-\FooterAccentHeight]current page.south east);
+    \end{tikzpicture}%
+}
+
+% ============================================================================
+% FRAME TITLE FORMATTING
+% ============================================================================
+
+\setbeamertemplate{frametitle}{%
+    \vspace{0.5cm}%
+    {\FrameTitleSize\textbf{\insertframetitle}}%
+    \par%
+}
+
+% ============================================================================
+% TITLE PAGE TEMPLATE
+% ============================================================================
+
+\defbeamertemplate*{title page}{customtitle}[1][]{%
+    \begin{tikzpicture}[remember picture, overlay]
+        % Left logo (bigger on title page)
+        \node[anchor=north west, inner sep=0.3cm] at (current page.north west) {%
+            \includegraphics[height=\TitleLogoHeight]{\LogoLeftFile}%
+        };
+        % Right logo (bigger on title page)
+        \node[anchor=north east, inner sep=0.3cm] at (current page.north east) {%
+            \includegraphics[height=\TitleLogoHeight]{\LogoRightFile}%
+        };
+        % Background image at bottom
+        \node[anchor=south, inner sep=0] at (current page.south) {%
+            \includegraphics[width=\paperwidth, height=\TitleBackgroundHeight, keepaspectratio=false]{\TitleBackgroundImage}%
+        };
+        % Date anchored to bottom right corner
+        \node[anchor=south east, inner sep=0.5cm] at (current page.south east) {%
+            \DateFontSize\PresentationDate%
+        };
+    \end{tikzpicture}%
+    % \vfill
+    % \begin{center}
+        {\TitleFontSize\bfseries\color{mainblue}\PresentationTitle\par}
+        \vspace{0.5cm}
+        % {\SubtitleFontSize\color{gray}\PresentationSubtitle\par}
+        % \vspace{1cm}
+        {\AuthorFontSize\AuthorName \hspace{1cm} \normalsize\AuthorAffiliation\par}
+    % \end{center}
+    \vfill
+}
+
+% ============================================================================
+% DOCUMENT INFO
+% ============================================================================
+
+\title{\PresentationTitle}
+\author{\AuthorName}
+\date{\PresentationDate}

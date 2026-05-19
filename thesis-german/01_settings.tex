@@ -1,0 +1,222 @@
+% Einstellungen und Pakete für die IWES Vorlage
+% Unterstützt: LuaLaTeX (Rotis-Schrift) und pdfLaTeX (Cabin-Fallback)
+
+%=== Kompatibilität ====================================
+\usepackage{scrhack}    % KOMA-Script Kompatibilität
+
+%=== Schriften =========================================
+\usepackage{iftex}
+
+\ifluatex
+    \usepackage{fontspec}
+    \IfFileExists{./font/RotisSansSerifStd-Regular.otf}{%
+        \setsansfont{RotisSansSerifStd-Regular.otf}[
+            Path           = ./font/,
+            BoldFont       = RotisSansSerifStd-Bold.otf,
+            ItalicFont     = RotisSansSerifStd-Italic.otf,
+            BoldItalicFont = RotisSansSerifStd-Bold.otf,
+            SmallCapsFont  = RotisSansSerifStd-Regular.otf,
+            SmallCapsFeatures = {Scale=0.8},
+        ]
+        \renewcommand*\familydefault{\sfdefault}
+    }{%
+        \setsansfont{TeX Gyre Heros}
+        \renewcommand*\familydefault{\sfdefault}
+        \PackageWarning{IWES}{Rotis nicht gefunden - verwende TeX Gyre Heros}
+    }
+\else
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage[sfdefault]{cabin}
+\fi
+
+%=== Sprache ===========================================
+\usepackage[english, ngerman]{babel}    % Beide geladen; aktive Sprache wird per \selectlanguage in 00_main.tex gesetzt
+\usepackage{csquotes}       % Für biblatex erforderlich
+\usepackage{etoolbox}       % Für Bedingungs-Makros (\ifdefstring)
+\usepackage{hyphenat}
+
+%=== Arbeitstyp-Konfiguration ===========================
+% Befehl: \setthesistype{master|bachelor|ip|wai}
+% Setzt automatisch alle typ-spezifischen Variablen
+\newcommand{\setthesistype}[1]{%
+    \def\thesistype{#1}%
+    % Master oder Bachelor
+    \ifboolexpr{ test {\ifdefstring{\thesistype}{master}} or test {\ifdefstring{\thesistype}{bachelor}} }{%
+        \def\thesisdesc{Wissenschaftliche Arbeit zur Erlangung des akademischen Grades}%
+        \def\thesismodule{}%
+        \newbool{showcoexaminer}\booltrue{showcoexaminer}%
+        \newbool{showdegree}\booltrue{showdegree}%
+    }{}%
+    % Interdisziplinäres Projekt
+    \ifdefstring{\thesistype}{ip}{%
+        \def\thesisdesc{Ausarbeitung für das Modul}%
+        \def\thesismodule{Interdisziplinäres Projekt}%
+        \newbool{showcoexaminer}\boolfalse{showcoexaminer}%
+        \newbool{showdegree}\boolfalse{showdegree}%
+    }{}%
+    % Wissenschaftliches Arbeiten im Ingenieurwesen
+    \ifdefstring{\thesistype}{wai}{%
+        \def\thesisdesc{Ausarbeitung für das Modul}%
+        \def\thesismodule{Wissenschaftliches Arbeiten im Ingenieurwesen}%
+        \newbool{showcoexaminer}\boolfalse{showcoexaminer}%
+        \newbool{showdegree}\boolfalse{showdegree}%
+    }{}%
+}
+
+%=== Seitenlayout ======================================
+\usepackage[
+    a4paper,
+    includeheadfoot,
+    left=2.5cm,
+    right=2.5cm,
+    top=2cm,
+    bottom=0.5cm
+]{geometry}
+
+\usepackage{pdfpages}       % PDF-Dateien einbinden
+
+%=== Kopf-/Fußzeilen ===================================
+\usepackage[headsepline, automark]{scrlayer-scrpage}
+\clearpairofpagestyles
+\automark[section]{chapter}
+
+\makeatletter
+\if@twoside
+    \lehead{\pagemark}
+    \rehead{\slshape\leftmark}
+    \lohead{\slshape\rightmark}
+    \rohead{\pagemark}
+\else
+    \lohead{\slshape\headmark}
+    \rohead{\pagemark}
+\fi
+\makeatother
+
+\pagestyle{scrheadings}
+
+% Kompatibilitätsmakros: \lhead{}/\rhead{} in 00_main.tex sind Kurzbefehle für
+% laufende Kolumnentitel. Es handelt sich NICHT um fancyhdr-Befehle — sie rufen
+% intern \markboth/\markright von KOMA-Script auf.
+\DeclareDocumentCommand{\lhead}{m}{\markboth{#1}{#1}}
+\DeclareDocumentCommand{\rhead}{m}{\markright{#1}}
+\DeclareDocumentCommand{\chead}{m}{}
+
+%=== Institutionelle Konstanten ========================
+% Diese Werte anpassen, falls sich Institutsname, Professor oder Adresse ändern.
+\def\universityName{Leibniz Universität Hannover}
+\def\instituteName{Institut für Windenergiesysteme}
+\def\professorName{Prof. Dr.-Ing. Andreas Reuter}
+\def\instituteStreet{Appelstraße 9A}
+\def\instituteCity{30167 Hannover}
+
+%=== Zeilenabstand =====================================
+\usepackage{setspace}
+\onehalfspacing
+
+%=== Hyperlinks ========================================
+\ifluatex
+    \usepackage[verbose=silent]{microtype}
+\else
+    \usepackage{microtype}
+\fi
+
+\usepackage{hyperref}
+\hypersetup{
+    hypertexnames=false,
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=green!50!black,
+    urlcolor=blue,
+    filecolor=magenta!70!black,
+}
+
+\usepackage{xurl}           % Besserer URL-Umbruch
+
+%=== Tabellen ==========================================
+\usepackage{colortbl}
+\usepackage{booktabs}       % Professionelle Tabellen
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\usepackage{rotating}
+\usepackage{multirow}
+\usepackage{multicol}
+
+%=== Grafiken ==========================================
+\usepackage{graphicx}
+\graphicspath{{figures/}}   % Bilderpfad
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[section]{placeins}
+
+%=== Mathematik ========================================
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+%=== Listen ============================================
+\usepackage{enumitem}       % Flexible Listenabstände (ersetzt paralist)
+\setlist{nosep}             % Kompakte Listen global (kein zusätzlicher vertikaler Abstand)
+
+%=== Einheiten und Symbole =============================
+\usepackage{siunitx}
+\sisetup{locale=DE}         % Deutsche Formatierung
+\usepackage[right]{eurosym}
+
+%=== Typographie =======================================
+\clubpenalty = 10000
+\widowpenalty = 10000
+\displaywidowpenalty = 10000
+\tolerance = 10000
+\hbadness = 10000
+\emergencystretch = 3em
+\hfuzz = 1pt
+
+%=== Inhaltsverzeichnis ================================
+\RedeclareSectionCommand[tocpagenumberwidth=2.5em]{chapter}
+
+%=== Literaturverzeichnis (biblatex) ===================
+\usepackage[
+    backend=biber,
+    style=numeric,
+    sorting=none,
+    doi=true,
+    url=true,
+    isbn=true,
+    maxbibnames=99,
+    giveninits=true,
+]{biblatex}
+
+\addbibresource{99_bibliography.bib}
+
+% DOI als klickbaren Link formatieren
+\DeclareFieldFormat{doi}{%
+    \mkbibacro{DOI}\addcolon\space
+    \ifhyperref
+        {\href{https://doi.org/#1}{\nolinkurl{#1}}}
+        {\nolinkurl{#1}}%
+}
+
+% Warnungen bei fehlenden DOI/URL/ISBN
+\AtEveryBibitem{%
+    % Artikel: DOI oder URL erforderlich
+    \ifentrytype{article}{%
+        \iffieldundef{doi}{%
+            \iffieldundef{url}{%
+                \PackageWarning{biblatex}{Fehlende DOI/URL für Artikel: \thefield{entrykey}}%
+            }{}%
+        }{}%
+    }{}%
+    % Bücher: ISBN oder DOI erforderlich
+    \ifentrytype{book}{%
+        \iffieldundef{isbn}{%
+            \iffieldundef{doi}{%
+                \PackageWarning{biblatex}{Fehlende ISBN/DOI für Buch: \thefield{entrykey}}%
+            }{}%
+        }{}%
+    }{}%
+}

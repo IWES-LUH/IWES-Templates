@@ -1,0 +1,85 @@
+\chapter{Formulae}
+\label{cha:Formulae}
+
+When deriving calculation and/or simulation models, a mathematical formulation must be used. Formulas are usually required for this. Formulas are to be treated as sentence components and can either be integrated into the continuous text or presented separately with numbering. It is essential to ensure that all formula characters (symbols) are introduced in the body text at the point where they are used for the first time.
+
+
+
+
+\begin{addmargin}[1cm]{1cm}
+	\textit{\textbf{Example:} A formula included in the continuous text can be, for example, the Pythagorean theorem, which is expressed by the equation $a^2+b^2=c^2$, where $a$ and $b$ are the cathets and $c$ the hypotenuse of a right-angled triangle}.
+\end{addmargin}
+
+The Pythagorean theorem can also be expressed as a set-off and numbered formula in the form
+
+\begin{equation}
+	a^2+b^2=c^2
+	\label{eq:pythagoras_EN}
+\end{equation}
+
+
+be displayed. An equation embedded in the continuous text cannot be referred to in the text. It is therefore important to ensure that equations to which reference is to be made are included in set-off form. When referring to an equation, the equation number must be referenced in round brackets. 
+
+
+\begin{addmargin}[1cm]{1cm}
+	\textit{\textbf{Example:} Equation (\ref{eq:pythagoras_EN}) shows the Pythagorean theorem}.
+\end{addmargin}
+
+In some cases, it can be useful to include a set of equations with aligned equals signs, in which each individual equation is given its own number. For example, the generally known binomial formulas in the form
+
+\begin{align}
+	(a+b)^2 & = a^2 + 2ab + b^2 \, , \label{eq:bin-1_EN} \\
+	(a-b)^2 & = a^2 - 2ab + b^2 \, , \label{eq:bin-2_EN} \\
+	(a+b)(a-b) & = a^2 - b^2 \, . \label{eq:bin-3_EN} 
+\end{align}
+
+
+Hierin sind $a$ und $b$ beliebige Variablen. Wie oben bereits erwähnt wurde, müssen Gleichungen immer als Satzbestandteil behandelt werden. Dies wird durch die Satzverbindungs- und Satzendezeichen (Kommas und Punkt) am Ende der Gleichungen (\ref{eq:bin-1_EN}), (\ref{eq:bin-2_EN}) und (\ref{eq:bin-3_EN}) deutlich. Matrizen sind auch häufig verwendete Optionen. Die Einheitsmatrix $\mathbf{I}$ wäre in abgesetzter Form beispielsweise durch den Ausdruck
+
+
+\begin{equation}
+	\mathbf{I} = 
+	\left[ \begin{matrix}
+		1 & 0 & 0 \\
+		0 & 1 & 0 \\
+		0 & 0 & 1 \\
+	\end{matrix} \right]
+\end{equation}
+
+
+
+
+to be introduced. In principle, vectors are to be identified by lower-case letters in bold, tensors and matrices by upper-case letters in bold. Greek letters may be an exception, as mechanical stresses and distortions, although they are tensorial quantities, are often expressed by the lowercase Greek letters $\boldsymbol{\sigma}$ and $\boldsymbol{\varepsilon}$.
+
+If long equations or equations with transformations become so long that they do not fit on one line, they should be split over several lines with the equals sign aligned. If you write the first binomial formula, see equation (\ref{eq:bin-1_EN}), with intermediate steps, it becomes, for example, the expression
+
+\begin{equation}
+	\begin{split}
+		(a+b)^2 &= (a+b)(a+b)\\
+		&= a^2 + ab + ab + b^2 = a^2 + 2ab + b^2 \,.
+	\end{split}
+\end{equation}
+
+The integration of fractions, products or integrals are also exemplified by the relationships
+
+\begin{equation}
+	\binom{n}{k} = \frac{\displaystyle\prod_{i=1}^n i}{\displaystyle\prod_{i=1}^k i\cdot
+		\prod_{i=1}^{n-k} i}
+\end{equation}
+
+
+and
+
+
+\begin{equation}
+	\int_0^5\limits \left(x^2 +x+1\right) \mathrm{d}x = \left. \frac{1}{3} x^3 + \frac{1}{2} x^2 + x + c \; \right|_0^5 = \frac{355}{6} + c \, ,
+\end{equation}
+
+where $x$ is a variable and $c$ is an integration constant.
+
+
+
+
+
+
+

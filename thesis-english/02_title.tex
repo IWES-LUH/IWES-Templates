@@ -1,0 +1,100 @@
+% ============================================================================
+% Title Pages
+% ============================================================================
+%
+% IMPORTANT: \setthesistype{...} must be called in 00_main.tex!
+% Valid values: master, bachelor, ip, wai
+%
+% ============================================================================
+
+% Check if \thesistype is defined
+\ifdef{\thesistype}{}{%
+    \PackageError{IWES}{%
+        Thesis type not defined!^^J%
+        Please set in 00_main.tex: \string\setthesistype{master}^^J%
+        Valid values: master, bachelor, ip, wai%
+    }{Set \string\setthesistype in 00_main.tex after \string\input{01_settings.tex}}%
+}
+
+% ============================================================================
+% FIRST TITLE PAGE (always shown)
+% ============================================================================
+
+\thispagestyle{empty}
+
+\begin{center}
+
+\begin{tabular}{p{6cm}p{6cm}}
+    \includegraphics[width=6cm]{figures/logo_iwes}  &
+    \includegraphics[width=6cm]{figures/logo_luh}\\
+    &  \vspace{1cm} \large\name  \\
+    &  \vspace{0.5cm} \setstretch{1.0}\Large\textbf{\titel} \\
+\end{tabular}
+
+\vspace{1cm}
+
+\vfill
+
+\begin{tabular}{p{6cm}p{6cm}}
+    &  \fbox{\parbox[t]{5cm}{\centering{\textbf{\projectNumber}}}}  \vspace{2cm} \\
+    &  \universityName \\
+    &   \instituteName \\
+    &   \professorName \\
+    &   \instituteStreet \\
+    &   \instituteCity
+\end{tabular}
+
+\end{center}
+
+\cleardoublepage
+
+% ============================================================================
+% SECOND TITLE PAGE
+% ============================================================================
+
+\thispagestyle{empty}
+
+\begin{center}
+
+\begin{tabular}{p{6cm}p{6cm}}
+    \includegraphics[width=6cm]{figures/logo_iwes}  &
+    \includegraphics[width=6cm]{figures/logo_luh}\\
+    &  \vspace{1cm} \large\name  \\
+    &  \vspace{0.5cm} \setstretch{1.0}\Large\textbf{\titel} \\
+\end{tabular}
+
+\vspace{1cm}
+
+% Type description (automatically set by \setthesistype)
+\begin{tabular}{p{6cm}p{6cm}}
+    & {\thesisdesc} \vspace{0.5cm}\\
+    \ifbool{showdegree}{%
+        & {\large\textbf{\projectType}}%
+    }{%
+        & {\textbf{\thesismodule}} \vspace{1cm}%
+    }
+\end{tabular}
+
+\vfill
+
+% Information
+\begin{tabular}{p{6cm}p{6cm}}
+    \raggedleft Study program: & \studiengang \\
+    \raggedleft Student ID: &  \matrikelnummer \\
+    \raggedleft Submitted on: &  \today \vspace{1.5cm} \\
+
+    \raggedleft Examiner: &  \textbf{\pruefer} \\
+    & \fpruefer \vspace{0.5cm} \\
+
+    \ifbool{showcoexaminer}{%
+        \raggedleft Co-examiner: &  \textbf{\zweitpruefer} \\
+        & \fzweitpruefer \vspace{0.5cm} \\
+    }{}
+
+    \raggedleft Supervisor: & \textbf{\betreuer} \\
+    & \fbetreuer
+\end{tabular}
+
+\end{center}
+
+\clearpage

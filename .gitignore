@@ -1,0 +1,41 @@
+## LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex\(busy\)
+*.nav
+*.snm
+*.vrb
+*.idx
+*.ind
+*.ilg
+*.run.xml
+*-blx.bib
+*.bcf
+
+## Font files (commercially licensed, add locally)
+*.otf
+*.ttf
+*.woff
+*.woff2
+
+## Compiled PDF outputs (logos and figures in subfolders are kept)
+thesis-english/*.pdf
+thesis-german/*.pdf
+beamer/00_main.pdf
+poster/00_template.pdf
+
+## Editor / OS
+.DS_Store
+Thumbs.db
+.vscode/
+*.swp
+*~

@@ -1,0 +1,60 @@
+\chapter{Guidelines for \LaTeX{}}
+\label{cha:latex_EN}
+
+
+
+
+
+
+For the preparation of scientific papers, it is advisable to use specialized and established typesetting systems. The IWES recommends \LaTeX{}, as it is widely used internationally in science. All major scientific journals and publishers distribute format templates for \LaTeX{}, so that publishing scientists are almost forced to deal with this system sooner or later.
+
+\LaTeX{} is a free open source project that has been established for decades. It is platform-independent and available for all operating systems (Windows, MacOS, Linux). In contrast to Microsoft Word or related products, in which work is carried out within a front-end interface, \LaTeX{} is a typesetting system that is mainly used via back-end editors. \LaTeX{} is a markup language. Source files are edited in an editor. These are then compiled into professional text documents that are superior in all respects to conventional word processing programs such as Microsoft Word or similar. Especially for documents containing mathematical formulas, \LaTeX{} has proven its worth.
+
+To be able to work with \LaTeX{}, you need three ingredients, which are described below for Windows computers (for other operating systems, you can find suitable alternatives by searching the Internet):
+
+
+\begin{enumerate}
+	\item \LaTeX{} distribution: For Windows, this is called \textit{MiKTeX}. It contains the complete file system required for compiling documents. The \LaTeX{} distribution should be installed first so that the editor installed afterwards automatically finds the \LaTeX{} paths on the computer.\\
+	\item Editor: The source files for the document to be compiled are edited in the editor. A backend editor is usually used. This means that the final document is not displayed immediately, but must first be compiled. There are numerous editors on the market, some of which are available free of charge. One example is the editor \textit{TeXstudio}, which offers a wide range of functions specialized for \LaTeX{} (syntax highlighting, auto-completion, etc.) and is platform-independent. \\
+	\item literature management tool: A literature management tool is essential for academic work, regardless of which software is ultimately used to create the academic paper. Only with a professional literature management tool will you be able to keep track of the literature you may want to cite in the long term. Here, too, there is a wide range of programs that can be used. \textit{JabRef} is a Java-based tool that is easy to use, platform-independent and available free of charge. Alternatively, you can also use paid solutions with a wider range of functions, e.g. \textit{Citavi}.
+\end{enumerate}
+
+
+
+As an alternative to the programs mentioned above, the IWES recommends the online tool \textit{Overleaf}, which integrates the bullet points 1. and 2. mentioned above and is provided by the LUIS as a service. Information on this can be found on the \href{https://www.luis.uni-hannover.de/de/services/speichersysteme/dateiservice/cloud-dienste/overleaf}{\textbf{website of the LUIS}}. Table \ref{tab:programs} summarizes the programs recommended for Windows and their sources of supply.
+
+
+\begin{table}[!htbp]
+	\normalsize
+	\centering
+	\caption[Recommended \LaTeX{} programs for Windows systems.]{Recommended \LaTeX{} programs for Windows}
+	\begin{tabular}{rll}
+		\toprule
+		\textbf{program} & \textbf{function} & \textbf{source} \\
+		\midrule
+		Overleaf & integrated online tool & \url{https://tex.cloud.uni-hannover.de/}\\
+		MiKTeX & TeX distribution for Windows & \url{https://miktex.org/} \\
+		TeXstudio & TeX-specific editor & \url{https://www.texstudio.org/} \\
+		JabRef & literature management tool & \url{https://www.jabref.org/} \\
+		\bottomrule
+	\end{tabular}%
+	\label{tab:programs}%
+\end{table}%
+
+
+The source files for this guide are also the \LaTeX{} template for writing scientific papers at IWES. This template is intended to simplify scientific work at IWES and enable a uniform layout of student papers.
+
+This \LaTeX{} template is optimized for the use of the compilation path \LaTeX{}$\rightarrow$PDF. This requires the images and graphics to be integrated as PDF vector files. Other file formats may be displayed incorrectly or not at all. In the command line of the editors, \LaTeX{}$\rightarrow$PDF must therefore also be set as the compilation path. In TeXstudio, this is usually already stored as a default setting. However, this should be checked if the functionality is incorrect.
+
+Embedded images must be included without a margin. If the created PDF file was not created without a margin, this can be subsequently removed using image editing programs.
+
+To transfer tables created in Excel to \LaTeX{}, there is a macro called \textit{Excel2LaTeX} that works quite well and can be integrated into Excel. This can be downloaded at \url{http://www.heise.de/download/excel2latex.html}. Alternatively, there are also programs such as \textit{LaTable} or \textit{Excel-To-LaTeX-Converter}, which make it easier to create tables in \LaTeX{}.
+
+
+\begin{addmargin}[1cm]{1cm}
+	\textit{\textbf{Note:} Graphics and/or photos that are to be included as illustrations should be named in the format \texttt{<chapter no>\_<illustration no>\_<illustration name>.<extension>} (example: \texttt{04\_01\_example.pdf} for figure \ref{fig:centered_EN}).}
+\end{addmargin}
+
+
+In the above note, the chapter number indicates the chapter to which the image is assigned. It is expressed as a two-digit number (e.g. \texttt{02} for the second chapter). The figure number represents the order of the figure in the chapter. It is also expressed as a two-digit number (e.g. \texttt{03} for the third figure). The figure name briefly and concisely describes the content or topic of the figure without spaces. A clear, concise name that is relevant to the content of the image is required here. The file extension indicates the file format of the image file. Ideally, it should be a PDF file. However, \LaTeX{} can usually also process JPG or PNG files.
+

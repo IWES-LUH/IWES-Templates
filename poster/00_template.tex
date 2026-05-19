@@ -1,0 +1,356 @@
+%!TEX root = 01_content.tex
+% ============================================================================
+% POSTER TEMPLATE - LUH STYLE (True Grid System)
+% ============================================================================
+% Compile: lualatex 01_content.tex
+% ============================================================================
+
+\documentclass[fontsize=25pt,DIV=1]{scrartcl}
+
+\ifdefined\PosterSize\else\newcommand{\PosterSize}{a0paper}\fi
+\ifdefined\PosterOrientation\else\newcommand{\PosterOrientation}{portrait}\fi
+
+\usepackage[\PosterSize,\PosterOrientation,margin=0pt]{geometry}
+
+% ----------------------------------------------------------------------------
+% PACKAGES
+% ----------------------------------------------------------------------------
+
+\usepackage{tikz}
+\usetikzlibrary{calc,positioning}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{iftex}
+\usepackage{etoolbox}
+\usepackage{hyperref}
+\usepackage{ragged2e}
+\usepackage{enumitem}
+\usepackage{kantlipsum}
+\usepackage[none]{hyphenat}
+\usepackage[protrusion=true,expansion=true,verbose=silent]{microtype}
+\usepackage{qrcode}     % QR code generation
+\usepackage{lmodern}    % Fix font size warnings from qrcode
+
+\hbadness=10000         % Suppress underfull hbox warnings (expected with no hyphenation)
+
+\pagestyle{empty}
+
+% ----------------------------------------------------------------------------
+% COLORS
+% ----------------------------------------------------------------------------
+
+\definecolor{mainblue}{RGB}{23,81,157}
+\definecolor{gridcolor}{RGB}{200,200,200}
+\definecolor{gridaccent}{RGB}{255,100,100}
+
+\hypersetup{colorlinks=true,linkcolor=mainblue,urlcolor=mainblue}
+
+% ----------------------------------------------------------------------------
+% FONTS
+% ----------------------------------------------------------------------------
+
+\ifluatex
+    \usepackage{fontspec}
+    \IfFontExistsTF{RotisSansSerifStd-Regular.otf}{%
+        \setmainfont{RotisSansSerifStd}[
+            Path=./Rotis/, Extension=.otf,
+            UprightFont=*-Regular, BoldFont=*-Bold,
+            ItalicFont=*-Italic, BoldItalicFont=*-Bold
+        ]
+        \setsansfont{RotisSansSerifStd}[
+            Path=./Rotis/, Extension=.otf,
+            UprightFont=*-Regular, BoldFont=*-Bold,
+            ItalicFont=*-Italic, BoldItalicFont=*-Bold
+        ]
+    }{\usepackage{tgheros}\renewcommand{\familydefault}{\sfdefault}}
+\else\ifxetex
+    \usepackage{fontspec}
+    \IfFontExistsTF{RotisSansSerifStd-Regular.otf}{%
+        \setmainfont{RotisSansSerifStd}[
+            Path=./Rotis/, Extension=.otf,
+            UprightFont=*-Regular, BoldFont=*-Bold,
+            ItalicFont=*-Italic, BoldItalicFont=*-Bold
+        ]
+        \setsansfont{RotisSansSerifStd}[
+            Path=./Rotis/, Extension=.otf,
+            UprightFont=*-Regular, BoldFont=*-Bold,
+            ItalicFont=*-Italic, BoldItalicFont=*-Bold
+        ]
+    }{\usepackage{tgheros}\renewcommand{\familydefault}{\sfdefault}}
+\else
+    \usepackage[T1]{fontenc}
+    \usepackage{tgheros}
+    \renewcommand{\familydefault}{\sfdefault}
+\fi\fi
+
+% ----------------------------------------------------------------------------
+% GRID CONFIGURATION
+% ----------------------------------------------------------------------------
+
+% Margins and gaps
+\ifdefined\MarginLeft\else\newcommand{\MarginLeft}{4cm}\fi
+\ifdefined\MarginRight\else\newcommand{\MarginRight}{4cm}\fi
+\ifdefined\MarginTop\else\newcommand{\MarginTop}{2cm}\fi
+\ifdefined\MarginBottom\else\newcommand{\MarginBottom}{2cm}\fi
+\ifdefined\ColumnGap\else\newcommand{\ColumnGap}{2cm}\fi
+
+% Row heights
+\ifdefined\LogoRowHeight\else\newcommand{\LogoRowHeight}{8cm}\fi
+\ifdefined\TitleRowHeight\else\newcommand{\TitleRowHeight}{14cm}\fi
+\ifdefined\FooterRowHeight\else\newcommand{\FooterRowHeight}{6cm}\fi
+% ContentRowHeight is calculated automatically
+
+% Logo files
+\ifdefined\LogoLeftFile\else\newcommand{\LogoLeftFile}{02-IWES-Logo.pdf}\fi
+\ifdefined\LogoRightFile\else\newcommand{\LogoRightFile}{01-LUH-Logo.pdf}\fi
+
+% Debug mode
+\newif\ifshowgrid\showgridfalse
+\newcommand{\gridshow}{\showgridtrue}
+\newcommand{\gridhide}{\showgridfalse}
+
+% ----------------------------------------------------------------------------
+% GRID DIMENSIONS (Calculated)
+% ----------------------------------------------------------------------------
+
+\newlength{\pw}          % poster width
+\newlength{\ph}          % poster height
+\newlength{\contentw}    % content width (between margins)
+\newlength{\colw}        % single column width
+\newlength{\contenth}    % content row height
+
+% Column X positions
+\newlength{\colAx}       % left margin start (0)
+\newlength{\colBx}       % left content column start
+\newlength{\colCx}       % gap start
+\newlength{\colDx}       % right content column start
+\newlength{\colEx}       % right margin start
+
+% Row Y positions (from top)
+\newlength{\rowAy}       % top margin start (0)
+\newlength{\rowBy}       % logo row start
+\newlength{\rowCy}       % title row start
+\newlength{\rowDy}       % content row start
+\newlength{\rowEy}       % footer row start
+\newlength{\rowFy}       % bottom margin start
+
+\AtBeginDocument{%
+    % Page dimensions
+    \setlength{\pw}{\paperwidth}%
+    \setlength{\ph}{\paperheight}%
+
+    % Content width and column width
+    \setlength{\contentw}{\dimexpr\pw - \MarginLeft - \MarginRight\relax}%
+    \setlength{\colw}{\dimexpr(\contentw - \ColumnGap) / 2\relax}%
+
+    % Content row height (remaining space)
+    \setlength{\contenth}{\dimexpr\ph - \MarginTop - \LogoRowHeight - \TitleRowHeight - \FooterRowHeight - \MarginBottom\relax}%
+
+    % Column X positions
+    \setlength{\colAx}{0pt}%
+    \setlength{\colBx}{\MarginLeft}%
+    \setlength{\colCx}{\dimexpr\MarginLeft + \colw\relax}%
+    \setlength{\colDx}{\dimexpr\MarginLeft + \colw + \ColumnGap\relax}%
+    \setlength{\colEx}{\dimexpr\pw - \MarginRight\relax}%
+
+    % Row Y positions
+    \setlength{\rowAy}{0pt}%
+    \setlength{\rowBy}{\MarginTop}%
+    \setlength{\rowCy}{\dimexpr\MarginTop + \LogoRowHeight\relax}%
+    \setlength{\rowDy}{\dimexpr\MarginTop + \LogoRowHeight + \TitleRowHeight\relax}%
+    \setlength{\rowEy}{\dimexpr\ph - \MarginBottom - \FooterRowHeight\relax}%
+    \setlength{\rowFy}{\dimexpr\ph - \MarginBottom\relax}%
+}
+
+% ----------------------------------------------------------------------------
+% DRAW GRID (Debug visualization)
+% ----------------------------------------------------------------------------
+
+\newcommand{\drawgrid}{%
+    \ifshowgrid
+    \begin{tikzpicture}[remember picture, overlay]
+        % === VERTICAL LINES (Columns) ===
+        % Left edge
+        \draw[gridaccent, line width=1pt]
+            (current page.north west) -- (current page.south west);
+        % Left margin / Content start
+        \draw[red, line width=2pt]
+            ([xshift=\colBx]current page.north west) -- ([xshift=\colBx]current page.south west);
+        % Left column end / Gap start
+        \draw[red, line width=2pt]
+            ([xshift=\colCx]current page.north west) -- ([xshift=\colCx]current page.south west);
+        % Gap end / Right column start
+        \draw[red, line width=2pt]
+            ([xshift=\colDx]current page.north west) -- ([xshift=\colDx]current page.south west);
+        % Content end / Right margin start
+        \draw[red, line width=2pt]
+            ([xshift=\colEx]current page.north west) -- ([xshift=\colEx]current page.south west);
+        % Right edge
+        \draw[gridaccent, line width=1pt]
+            (current page.north east) -- (current page.south east);
+
+        % === HORIZONTAL LINES (Rows) ===
+        % Top edge
+        \draw[gridaccent, line width=1pt]
+            (current page.north west) -- (current page.north east);
+        % Top margin end / Logo row start
+        \draw[red, line width=2pt]
+            ([yshift=-\rowBy]current page.north west) -- ([yshift=-\rowBy]current page.north east);
+        % Logo row end / Title row start
+        \draw[red, line width=2pt]
+            ([yshift=-\rowCy]current page.north west) -- ([yshift=-\rowCy]current page.north east);
+        % Title row end / Content row start
+        \draw[red, line width=2pt]
+            ([yshift=-\rowDy]current page.north west) -- ([yshift=-\rowDy]current page.north east);
+        % Content row end / Footer row start
+        \draw[red, line width=2pt]
+            ([yshift=-\rowEy]current page.north west) -- ([yshift=-\rowEy]current page.north east);
+        % Footer row end / Bottom margin start
+        \draw[red, line width=2pt]
+            ([yshift=-\rowFy]current page.north west) -- ([yshift=-\rowFy]current page.north east);
+        % Bottom edge
+        \draw[gridaccent, line width=1pt]
+            (current page.south west) -- (current page.south east);
+
+        % === LABELS ===
+        \node[fill=white, font=\tiny] at ([xshift=0.5\MarginLeft, yshift=-0.5\rowBy]current page.north west) {MARGIN};
+        \node[fill=white, font=\tiny] at ([xshift=\colBx+0.5\colw, yshift=-\rowBy-0.5\LogoRowHeight]current page.north west) {LOGO LEFT};
+        \node[fill=white, font=\tiny] at ([xshift=\colDx+0.5\colw, yshift=-\rowBy-0.5\LogoRowHeight]current page.north west) {LOGO RIGHT};
+        \node[fill=white, font=\tiny] at ([xshift=0.5\pw, yshift=-\rowCy-0.5\TitleRowHeight]current page.north west) {TITLE};
+        \node[fill=white, font=\tiny] at ([xshift=\colBx+0.5\colw, yshift=-\rowDy-2cm]current page.north west) {COL 1};
+        \node[fill=white, font=\tiny] at ([xshift=\colDx+0.5\colw, yshift=-\rowDy-2cm]current page.north west) {COL 2};
+        \node[fill=white, font=\tiny] at ([xshift=0.5\pw, yshift=-\rowEy-0.5\FooterRowHeight]current page.north west) {FOOTER};
+    \end{tikzpicture}%
+    \fi
+}
+
+% ----------------------------------------------------------------------------
+% LOGO ROW - spans columns B-D (both content columns + gap)
+% ----------------------------------------------------------------------------
+
+\newcommand{\posterlogos}{%
+    \begin{tikzpicture}[remember picture, overlay]
+        % Left logo in column B (left content column)
+        \node[anchor=north west, inner sep=0pt] at
+            ([xshift=\colBx, yshift=-\rowBy]current page.north west)
+            {\includegraphics[height=\dimexpr\LogoRowHeight-1cm\relax]{\LogoLeftFile}};
+        % Right logo in column D (right content column), right-aligned
+        \node[anchor=north east, inner sep=0pt] at
+            ([xshift=\colEx, yshift=-\rowBy]current page.north west)
+            {\includegraphics[height=\dimexpr\LogoRowHeight-1cm\relax]{\LogoRightFile}};
+    \end{tikzpicture}%
+}
+
+% ----------------------------------------------------------------------------
+% TITLE ROW - spans columns B-D (full content width)
+% ----------------------------------------------------------------------------
+
+\newcommand{\postertitle}[2]{%
+    \begin{tikzpicture}[remember picture, overlay]
+        % Main title (130pt)
+        \node[anchor=north west, inner sep=0pt,
+              text width=\contentw,
+              font=\fontsize{130}{156}\selectfont\bfseries,
+              text=mainblue] at
+            ([xshift=\colBx, yshift=-\rowCy]current page.north west)
+            {#1};
+        % Subtitle (83pt)
+        \node[anchor=north west, inner sep=0pt,
+              text width=\contentw,
+              font=\fontsize{83}{100}\selectfont,
+              text=mainblue] at
+            ([xshift=\colBx, yshift=-\rowCy-7cm]current page.north west)
+            {#2};
+    \end{tikzpicture}%
+}
+
+% ----------------------------------------------------------------------------
+% CONTENT COLUMNS - Column B (left) or Column D (right)
+% ----------------------------------------------------------------------------
+
+\newcommand{\postercolumn}[2]{%
+    % #1 = column number (1 or 2), #2 = content
+    \begin{tikzpicture}[remember picture, overlay]
+        \ifnum#1=1
+            % Column 1 = Grid column B
+            \node[anchor=north west, inner sep=0pt,
+                  text width=\colw,
+                  font=\fontsize{32}{44}\selectfont\hyphenpenalty=10000\exhyphenpenalty=10000\tolerance=9999\emergencystretch=3em,
+                  align=justify] at
+                ([xshift=\colBx, yshift=-\rowDy]current page.north west)
+                {#2};
+        \else
+            % Column 2 = Grid column D
+            \node[anchor=north west, inner sep=0pt,
+                  text width=\colw,
+                  font=\fontsize{32}{44}\selectfont\hyphenpenalty=10000\exhyphenpenalty=10000\tolerance=9999\emergencystretch=3em,
+                  align=justify] at
+                ([xshift=\colDx, yshift=-\rowDy]current page.north west)
+                {#2};
+        \fi
+    \end{tikzpicture}%
+}
+
+% ----------------------------------------------------------------------------
+% FOOTER ROW - spans columns B-D
+% ----------------------------------------------------------------------------
+
+\newcommand{\posterfooter}[4]{%
+    % #1 = Institute, #2 = Contact person, #3 = Website, #4 = QR code URL
+    \begin{tikzpicture}[remember picture, overlay]
+        % Footer text (left side)
+        \node[anchor=north west, inner sep=0pt,
+              text width=0.6\contentw,
+              font=\fontsize{40}{50}\selectfont,
+              align=left] at
+            ([xshift=\colBx, yshift=-\rowEy]current page.north west)
+            {\textbf{#1}\\#2\\#3};
+        % QR code (right side, blue colored)
+        \node[anchor=north east, inner sep=0pt] at
+            ([xshift=\colEx, yshift=-\rowEy]current page.north west)
+            {\textcolor{mainblue}{\qrcode[height=\dimexpr\FooterRowHeight-1cm\relax]{#4}}};
+    \end{tikzpicture}%
+}
+
+% ----------------------------------------------------------------------------
+% SECTION HEADERS
+% ----------------------------------------------------------------------------
+
+\newcommand{\postersection}[1]{%
+    \vspace{1.2em}%
+    {\fontsize{60}{72}\selectfont\bfseries\color{mainblue}#1}\\[0.6em]%
+}
+
+\newcommand{\postersubsection}[1]{%
+    \vspace{0.6em}%
+    {\fontsize{45}{54}\selectfont\bfseries\color{mainblue}#1}\\[0.4em]%
+}
+
+% ----------------------------------------------------------------------------
+% FIGURES
+% ----------------------------------------------------------------------------
+
+\newcommand{\posterfigure}[3][width=\linewidth]{%
+    \vspace{0.8em}%
+    \begin{center}
+        \includegraphics[#1]{#2}\\[0.4em]
+        {\fontsize{26}{32}\selectfont\textit{#3}}
+    \end{center}
+    \vspace{0.8em}%
+}
+
+% ----------------------------------------------------------------------------
+% LISTS
+% ----------------------------------------------------------------------------
+
+\setlist[itemize]{leftmargin=1.2em,labelsep=0.5em,itemsep=0.4em,parsep=0.2em,topsep=0.4em}
+\setlist[itemize,1]{label={\color{mainblue}\textbullet}}
+\setlist[itemize,2]{label={\color{mainblue}--}}
+
+% ----------------------------------------------------------------------------
+% UTILITIES
+% ----------------------------------------------------------------------------
+
+\newcommand{\highlight}[1]{\textbf{\color{mainblue}#1}}
+
+% ============================================================================

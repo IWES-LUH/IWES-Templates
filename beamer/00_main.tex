@@ -1,0 +1,68 @@
+%!TEX program = lualatex
+% ============================================================================
+% BEAMER PRESENTATION - MAIN FILE
+% ============================================================================
+% Compile: lualatex 00_main.tex (preferred) or pdflatex 00_main.tex (fallback)
+%
+% FILE STRUCTURE:
+%   00_main.tex       - This file (presentation info + includes)
+%   00_template.tex   - Template settings (modify for theme changes)
+%   01_slides.tex     - Your content slides
+%   99_bibliography.tex - References
+%
+% ============================================================================
+% RULES TO FOLLOW
+% ============================================================================
+%
+% LABELS: fig:name, tab:name, eq:name, sec:name
+% CHARS:  ASCII only, escape \% \& \$ \# \_ \{ \}
+% MATH:   Use align/multline for long equations
+% CITE:   Space before \cite: "shown in \cite{}" not "in\cite{}"
+%
+% ============================================================================
+% PRESENTATION INFO
+% ============================================================================
+
+\newcommand{\AuthorName}{Basem Rajjoub}
+\newcommand{\AuthorAffiliation}{IWES, LUH}
+\newcommand{\PresentationTitle}{Presentation Title}
+\newcommand{\PresentationSubtitle}{Optional Subtitle}
+\newcommand{\PresentationDate}{February 11, 2026}
+
+% ============================================================================
+% LOAD TEMPLATE
+% ============================================================================
+
+\input{00_template}
+
+% ============================================================================
+% DOCUMENT
+% ============================================================================
+
+\begin{document}
+
+% --- Title Slide ---
+\begin{frame}[plain]
+    \titlepage
+\end{frame}
+
+% --- Outline ---
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+% ============================================================================
+% SLIDES
+% ============================================================================
+
+\input{01_slides}
+% \input{02_slides}
+% \input{03_slides}
+
+% ============================================================================
+% BIBLIOGRAPHY
+% ============================================================================
+
+\input{99_bibliography}
+
+\end{document}

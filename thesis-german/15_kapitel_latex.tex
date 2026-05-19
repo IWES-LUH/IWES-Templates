@@ -1,0 +1,47 @@
+\chapter{Hinweise zu \LaTeX{}}
+\label{cha:latex_DE}
+
+Für die Anfertigung von wissenschaftlichen Arbeiten empfiehlt es sich, auf spezialisierte und etablierte Textsatzsysteme zurückzugreifen. Das IWES empfiehlt \LaTeX{}, da es in der Wissenschaft international weit verbreitet ist. Alle nennenswerten wissenschaftlichen Zeitschriften und Verlage verteilen Formatvorlagen für \LaTeX{}, so dass publizierende Wissenschaftlerinnen und Wissenschaftler nahezu gezwungen sind, sich früher oder später mit diesem System auseinander zu setzen.
+
+\LaTeX{} ist ein kostenfreies OpenSource-Projekt, das sich seit Jahrzehnten etabliert hat. Es ist plattformunabhängig für alle Betriebssysteme (Windows, MacOS, Linux) verfügbar. Im Gegensatz zu Microsoft Word oder verwandten Produkten, in denen innerhalb einer Frontend-Oberfläche gearbeitet wird, handelt es sich bei \LaTeX{} um ein Textsatzsystem, das überwiegend über Backend-Editoren genutzt wird. \LaTeX{} ist eine Auszeichnungssprache. Man bearbeitet Quelldateien in einem Editor. Diese werden dann zu professionellen Textdokumenten kompiliert, die in allen Belangen üblichen Textverarbeitungsprogrammen wie z.\,B. Microsoft Word o.\,Ä. überlegen sind. Insbesondere bei Dokumenten, die mathematische Formeln enthalten, hat sich \LaTeX{} bewährt.
+
+Um mit \LaTeX{} arbeiten zu können, benötigt man drei Zutaten, die im Folgenden für Windows-Computer beschrieben werden (für andere Betriebssysteme kann man geeignete Alternativen über eine Internet-Recherche finden):
+
+\begin{enumerate}
+	\item \LaTeX{}-Distribution: Für Windows heißt diese \textit{MiKTeX}. Sie beinhaltet das vollständige Dateisystem, das für das Kompilieren von Dokumenten benötigt wird. Die \LaTeX{}-Distribution sollte zuerst installiert werden, damit der danach installierte Editor die \LaTeX{}-Pfade auf dem Rechner automatisch findet.\\
+	\item Editor: Im Editor werden die Quelldateien für das zu kompilierende Dokument bearbeitet. Meist wird ein Backend-Editor genutzt. D.\,h., dass das finale Dokument nicht sofort angezeigt wird, sondern erst kompiliert werden muss. Es gibt zahlreiche Editoren auf dem Markt, die z.\,T. kostenlos verfügbar sind. Es sei beispielhaft der Editor \textit{TeXstudio} genannt, der vielfältige auf \LaTeX{} spezialisierte Funktionen bietet (Syntaxhervorhebung, Autoverfollständigung, etc.) und plattformunabhängig nutzbar ist. \\
+	\item Literaturmanagement-Tool: Ein Tool für das Literaturmanagement ist für das wissenschaftliche Arbeiten unumgänglich, unabhängig davon, welche Software letztlich für das Erstellen der wissenschaftlichen Ausarbeitung verwendet wird. Nur mit einem professionellen Tool für das Literaturmanagement ist man langfristig in der Lage, einen Überblick über die Literatur, die man ggf. zitieren möchte, zu behalten. Auch hier gibt es ein breites Angebot an Programmen, die genutzt werden können. \textit{JabRef} ist ein Java-basiertes Tool, das einfach zu nutzen und plattformunabhängig und kostenfrei zur Verfügung steht. Alternativ kann auch auf kostenpflichtige Lösungen mit einem breiteren Funktionsspektrum zurückgegriffen werden, z.\,B. \textit{Citavi}.
+\end{enumerate}
+
+Das IWES empfiehlt alternativ zu den oben genannten Programmen das online-Tool \textit{Overleaf}, das die oben genannten Aufzählungspunkte 1. und 2. integriert und vom LUIS als Dienst zur Verfügung gestellt wird. Informationen dazu finden Sie auf der \href{https://www.luis.uni-hannover.de/de/services/speichersysteme/dateiservice/cloud-dienste/overleaf}{\textbf{Website des LUIS}}. Tabelle \ref{tab:programme} fasst die für Windows empfohlenen Programme und ihre Bezugsquellen noch einmal zusammen.
+
+\begin{table}[!htbp]
+\normalsize
+  \centering
+  \caption[Empfohlene \LaTeX{}-Programme für Windows-Systeme.]{Empfohlene \LaTeX{}-Programme für Windows}
+    \begin{tabular}{rll}
+    	\toprule
+    	\textbf{Programm} & \textbf{Funktion} & \textbf{Bezugsquelle} \\
+    	\midrule
+		Overleaf & Integriertes Online-Tool & \url{https://tex.cloud.uni-hannover.de/}\\
+    	MiKTeX & TeX-Distribution für Windows & \url{https://miktex.org/} \\
+		TeXstudio & TeX-spezifischer Editor & \url{https://www.texstudio.org/} \\
+		JabRef & Literaturmanagement-Tool & \url{https://www.jabref.org/} \\
+		\bottomrule
+    \end{tabular}%
+  \label{tab:programme}%
+\end{table}%
+
+Die Quelldateien für diesen Leitfaden sind gleichzeitig die \LaTeX{}-Vorlage für das Erstellen von wissenschaftlichen Arbeiten am IWES. Diese Vorlage soll das wissenschaftliche Arbeiten am IWES vereinfachen und ein einheitliches Layout von studentischen Arbeiten ermöglichen.
+
+Diese \LaTeX{}vorlage ist für die Verwendung des Kompilierungsweges \LaTeX{}$\rightarrow$PDF optimiert. Dies erfordert die Einbindung der Abbildungen und Graphiken als PDF-Vektordateien. Andere Dateiformate werden unter Umständen fehlerhaft oder gar nicht dargestellt. In der Kommandozeile der Editoren muss als Kompilierungsweg daher auch \LaTeX{}$\rightarrow$PDF eingestellt werden. Bei TeXstudio ist dies üblicherweise bereits als Voreinstellung hinterlegt. Bei fehlerhafter Funktionalität sollte dies aber überprüft werden.
+
+Eingebundene Bilder müssen ohne Rand eingebunden werden. Wurde die erstellte PDF-Datei nicht ohne Rand erstellt, so kann dieser mittels Bildbearbeitungsprogramme nachträglich entfernt werden.
+
+Für das Übernehmen von in Excel erstellten Tabellen in \LaTeX{} gibt es ein recht gut funktionierendes Makro namens \textit{Excel2LaTeX}, dass in Excel eingebunden werden kann. Dieses kann unter  \url{http://www.heise.de/download/excel2latex.html} heruntergeladen werden. Alternativ gibt es auch Programme wie \textit{LaTable} oder \textit{Excel-To-LaTeX-Converter}, die das erstellen von Tabellen in \LaTeX{} erleichtern.
+
+\begin{addmargin}[1cm]{1cm}
+	\textit{\textbf{Hinweis:} Grafiken und/oder Fotos, die als Abbildungen eingebunden werden sollen, sollten im Format \texttt{<Kapitel-Nr>\_<Abbildungs-Nr>\_<Abbildungs-Name>.<Erweiterung>} benannt werden (Beispiel: \texttt{04\_01\_Beispielbild.pdf} für Abbildung \ref{fig:centered_DE}).}
+\end{addmargin}
+
+Bei dem obigen Hinweis gibt die Kapitelnummer das Kapitel an, dem das Bild zugeordnet ist. Sie wird als zweistellige Zahl ausgedrückt (z. B. \texttt{02} für das zweite Kapitel). Die Abbildungsnummer stellt die Reihenfolge der Abbildung im Kapitel dar. Sie wird ebenfalls als zweistellige Zahl ausgedrückt (z.B. \texttt{03} für die dritte Abbildung). Der Abbildungsname beschreibt kurz und knapp und ohne Leerzeichen den Inhalt oder das Thema der Abbildung. Hier ist ein klarer, prägnanter Name, der relevant für den Inhalt der Abbildung ist, erforderlich. Die Dateierweiterung beizeichnet das Dateiformat der Bilddatei. Idealerweise handelt es sich um eine PDF-Datei. In der Regel kann \LaTeX{} aber auch JPG- oder PNG-Dateien verarbeiten.

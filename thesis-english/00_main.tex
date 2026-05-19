@@ -1,0 +1,150 @@
+% !TEX program = lualatex
+% !TEX encoding = UTF-8 Unicode
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% IWES Thesis Template (English)
+% Version:  2.0.0
+% Date:     2026-03-09
+% Author:   Basem Rajjoub
+% Email:    basem.rajjoub@iwes.uni-hannover.de
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Main document file - compile this file.
+%
+% COMPILER:
+%   lualatex 00_main && biber 00_main && lualatex 00_main
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[
+11pt,                   % Font size 11pt
+a4paper,                % Paper size A4
+twoside,                % Two-sided document (change to 'oneside' for single-sided)
+openright,              % Chapters start on right (odd) pages
+cleardoublepage=empty,  % Blank pages have no headers
+parskip=half,           % Paragraph spacing half a line
+numbers=noenddot,       % No dots at end of section numbers
+listof=totoc,           % Include lists in table of contents
+bibliography=totoc,     % Include bibliography in table of contents
+]{scrreprt}
+
+
+% Load settings and packages
+\input{01_settings.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   STUDENT CONFIGURATION — EDIT ONLY THIS SECTION
+%   Everything below \begin{document} should not need changes
+%   (except adding/removing chapter \input lines)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% REQUIRED: Thesis type
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Valid values: master, bachelor, ip, wai
+%   master   = Master thesis
+%   bachelor = Bachelor thesis
+%   ip       = Interdisciplinary Project
+%   wai      = Scientific Work in Engineering
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setthesistype{wai}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Personal information for title page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\name{John Doe}                                 % Author name
+\def\titel{Example Title}       % Thesis title
+\def\matrikelnummer{12345678}                       % Student ID
+
+\def\projectType{Master of Science (M.Sc.)}         % Degree (for master/bachelor)
+% \def\projectType{Bachelor of Science (B.Sc.)}
+
+\def\betreuer{Title First Last}                     % Supervisor
+\def\fbetreuer{Institute of Wind Energy Systems, LUH}
+
+\def\pruefer{Title First Last}                      % First examiner
+\def\fpruefer{Institute of Wind Energy Systems, LUH}
+
+\def\zweitpruefer{Title First Last}                 % Second examiner
+\def\fzweitpruefer{Institute of Wind Energy Systems, LUH}
+
+\def\studiengang{Civil Engineering (M.Sc.)}         % Study program
+\def\projectNumber{XXX-XXX-XXX}                     % Project number
+
+% Confidential thesis only: set the company name shown in the confidentiality notice.
+% If the thesis is not confidential, comment out the entire confidentiality section in 03_declaration.tex.
+\def\companyname{CompanyXXX}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\selectlanguage{english}
+
+%=== Title pages ========================================
+% Automatically selected based on \thesistype
+\input{02_title.tex}
+
+\pagenumbering{Roman}
+\setcounter{page}{2}
+
+%=== Front matter ======================================
+\input{03_declaration.tex}      % Contains confidentiality notice (optional) + declaration
+\input{04_assignment.tex}
+\input{05_abstract.tex}
+
+%=== Table of contents =================================
+\pdfbookmark[1]{Table of Contents}{toc}
+\lhead{\slshape{Table of Contents}}
+\tableofcontents
+\cleardoublepage
+
+%=== Main content ======================================
+\pagestyle{scrheadings}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\input{10_chapter_structure.tex}
+\clearpage
+\input{11_chapter_form.tex}
+\clearpage
+\input{12_chapter_formulas.tex}
+\clearpage
+\input{13_chapter_images.tex}
+\clearpage
+\input{14_chapter_tables.tex}
+\clearpage
+\input{15_chapter_latex.tex}
+\cleardoublepage
+
+%=== Lists =============================================
+\pagenumbering{Roman}
+% NOTE: This counter must equal the current Roman page number at this point.
+% Count: title (I, not shown) + declarations + assignment + abstract + TOC = pages before lists.
+% If you add or remove front-matter sections, update this number accordingly.
+\setcounter{page}{7}
+
+% List of figures and tables are added to the TOC automatically via listof=totoc
+% in the document class — no \addcontentsline needed here.
+\listoffigures
+\clearpage
+
+\listoftables
+\clearpage
+
+% Symbols and abbreviations
+\input{80_symbols.tex}
+
+%=== Bibliography ======================================
+\sloppy
+\addtocontents{toc}{\vspace{8ex}}
+\printbibliography[heading=bibintoc, title=Bibliography]
+\cleardoublepage
+
+%=== Appendix ==========================================
+\appendix
+\input{90_appendix.tex}
+
+\end{document}

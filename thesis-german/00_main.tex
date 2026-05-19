@@ -1,0 +1,150 @@
+% !TEX program = lualatex
+% !TEX encoding = UTF-8 Unicode
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% IWES Abschlussarbeit Vorlage (Deutsch)
+% Version:  2.0.0
+% Datum:    2026-03-09
+% Autor:    Basem Rajjoub
+% Email:    basem.rajjoub@iwes.uni-hannover.de
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Hauptdokument - Diese Datei kompilieren.
+%
+% COMPILER:
+%   lualatex 00_main && biber 00_main && lualatex 00_main
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[
+11pt,                   % Schriftgröße 11pt
+a4paper,                % Papierformat A4
+twoside,                % Zweiseitiges Dokument (für 'oneside' ändern)
+openright,              % Kapitel beginnen auf rechten (ungeraden) Seiten
+cleardoublepage=empty,  % Leerseiten ohne Kopfzeilen
+parskip=half,           % Absatzabstand halbe Zeile
+numbers=noenddot,       % Keine Punkte am Ende der Nummerierung
+listof=totoc,           % Verzeichnisse im Inhaltsverzeichnis
+bibliography=totoc,     % Literaturverzeichnis im Inhaltsverzeichnis
+]{scrreprt}
+
+
+% Einstellungen und Pakete laden
+\input{01_settings.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   STUDIERENDEN-KONFIGURATION — NUR DIESEN BEREICH BEARBEITEN
+%   Alles unterhalb von \begin{document} muss normalerweise nicht geändert werden
+%   (außer Kapitel-\input-Zeilen hinzufügen/entfernen)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% PFLICHTFELD: Art der Arbeit
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Gueltige Werte: master, bachelor, ip, wai
+%   master   = Masterarbeit
+%   bachelor = Bachelorarbeit
+%   ip       = Interdisziplinaeres Projekt
+%   wai      = Wissenschaftliches Arbeiten im Ingenieurwesen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setthesistype{master}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Persoenliche Angaben fuer das Titelblatt
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\name{Max Mustermann}                           % Name des Autors
+\def\titel{Beispieltitel}        % Titel der Arbeit
+\def\matrikelnummer{12345678}                       % Matrikelnummer
+
+\def\projectType{Master of Science (M.Sc.)}         % Abschlussgrad (fuer master/bachelor)
+% \def\projectType{Bachelor of Science (B.Sc.)}
+
+\def\betreuer{Titel Vorname Nachname}               % Betreuer
+\def\fbetreuer{Institut für Windenergiesysteme, LUH}
+
+\def\pruefer{Titel Vorname Nachname}                % Erstprüfer
+\def\fpruefer{Institut für Windenergiesysteme, LUH}
+
+\def\zweitpruefer{Titel Vorname Nachname}           % Zweitprüfer
+\def\fzweitpruefer{Institut für Windenergiesysteme, LUH}
+
+\def\studiengang{Bauingenieurwesen (M.Sc.)}         % Studiengang
+\def\projectNumber{XXX-XXX-XXX}                     % Projektnummer
+
+% Nur bei vertraulichen Arbeiten: Firmenname für den Sperrvermerk setzen.
+% Wenn die Arbeit nicht vertraulich ist, den gesamten Sperrvermerk-Abschnitt in 03_erklaerungen.tex auskommentieren.
+\def\companyname{Firmaxxx}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\selectlanguage{ngerman}
+
+%=== Titelseiten ========================================
+% Automatisch ausgewaehlt basierend auf \thesistype
+\input{02_titel.tex}
+
+\pagenumbering{Roman}
+\setcounter{page}{2}
+
+%=== Vorspann ==========================================
+\input{03_erklaerungen.tex}     % Enthält Sperrvermerk (optional) + Eidesstattliche Erklärung
+\input{04_aufgabenstellung.tex}
+\input{05_kurzfassung.tex}
+
+%=== Inhaltsverzeichnis ================================
+\pdfbookmark[1]{Inhaltsverzeichnis}{toc}
+\lhead{\slshape{Inhaltsverzeichnis}}
+\tableofcontents
+\cleardoublepage
+
+%=== Hauptteil =========================================
+\pagestyle{scrheadings}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\input{10_kapitel_aufbau.tex}
+\clearpage
+\input{11_kapitel_form.tex}
+\clearpage
+\input{12_kapitel_formeln.tex}
+\clearpage
+\input{13_kapitel_bilder.tex}
+\clearpage
+\input{14_kapitel_tabellen.tex}
+\clearpage
+\input{15_kapitel_latex.tex}
+\cleardoublepage
+
+%=== Verzeichnisse =====================================
+\pagenumbering{Roman}
+% HINWEIS: Dieser Zähler muss der aktuellen römischen Seitenzahl entsprechen.
+% Zählung: Titelseite (I, nicht sichtbar) + Erklärungen + Aufgabenstellung + Kurzfassung + Inhaltsverzeichnis = Seiten vor den Verzeichnissen.
+% Wenn Vorspann-Abschnitte hinzugefügt oder entfernt werden, diesen Wert entsprechend anpassen.
+\setcounter{page}{7}
+
+% Abbildungs- und Tabellenverzeichnis werden automatisch über listof=totoc
+% in der Dokumentklasse zum Inhaltsverzeichnis hinzugefügt — kein \addcontentsline nötig.
+\listoffigures
+\clearpage
+
+\listoftables
+\clearpage
+
+% Symbole und Abkürzungen
+\input{80_symbole.tex}
+
+%=== Literaturverzeichnis ==============================
+\sloppy
+\addtocontents{toc}{\vspace{8ex}}
+\printbibliography[heading=bibintoc, title=Literaturverzeichnis]
+\cleardoublepage
+
+%=== Anhang ============================================
+\appendix
+\input{90_anhang.tex}
+
+\end{document}

@@ -1,0 +1,72 @@
+%!TEX program = lualatex
+% ============================================================================
+% POSTER CONTENT - LUH STYLE (True Grid System)
+% ============================================================================
+
+% --- Paper size ---
+\newcommand{\PosterSize}{a0paper}
+\newcommand{\PosterOrientation}{portrait}
+
+% --- Grid Configuration ---
+% Margins
+\newcommand{\MarginLeft}{4cm}
+\newcommand{\MarginRight}{4cm}
+\newcommand{\MarginTop}{4cm}
+\newcommand{\MarginBottom}{4cm}
+
+% Column gap
+\newcommand{\ColumnGap}{4cm}
+
+% Row heights
+\newcommand{\LogoRowHeight}{8cm}
+\newcommand{\TitleRowHeight}{14cm}
+\newcommand{\FooterRowHeight}{6cm}
+
+% --- Logos ---
+\newcommand{\LogoLeftFile}{02-IWES-Logo.pdf}
+\newcommand{\LogoRightFile}{01-LUH-Logo.pdf}
+
+% ============================================================================
+\input{00_template}
+% ============================================================================
+
+\begin{document}
+
+% === SHOW GRID (comment out to hide) ===
+% \gridshow
+% \drawgrid
+
+% --- LOGOS ---
+\posterlogos
+
+% --- TITLE ---
+\postertitle{Dies ist eine Headline}{Und eine Subheadline}
+
+% --- COLUMN 1 ---
+\postercolumn{1}{%
+\kant[1][1-3]
+
+\postersection{Was wird erforscht?}
+
+\kant[2][1-3]
+
+\posterfigure[width=\linewidth]{example_figure.png}{Dies ist eine Bildunterschrift}
+
+\kant[3][1-2]
+}
+
+% --- COLUMN 2 ---
+\postercolumn{2}{%
+\posterfigure[width=\linewidth]{example_figure.png}{Dies ist eine Bildunterschrift}
+
+\kant[4][1-3]
+
+\posterfigure[width=\linewidth]{example_figure.png}{Dies ist eine Bildunterschrift}
+
+\kant[5][1-1]
+}
+
+% --- FOOTER ---
+\posterfooter{Institut f\"ur Beispiel}{Pro. Dr. Ing. Berta Beispiel}{www.beispiel.uni-hannover.de}{https://www.beispiel.uni-hannover.de}
+
+\end{document}

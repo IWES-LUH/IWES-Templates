@@ -1,0 +1,214 @@
+\chapter{Tables}
+\label{cha:Tables}
+
+Alongside illustrations, tables are a useful means of presenting content clearly or integrating data. They should be centered and separated from the text. Tables should not be surrounded by text.
+
+Like figures, tables should be labeled. The table caption should be placed above the table, e.g. table \ref{tab:Beispieltab-1_EN}. It is centered and justified with a hanging indent so that the actual caption begins flush left after the numbering, see also the rules for figures in section \ref{cha:Images_EN}. 
+
+\begin{table}[!htbp]
+	\centering
+	\caption[Two-column sample table with different column alignments]{Two-column sample table with different column alignments (left column right-aligned, right column left-aligned). The label has a hanging indent}.
+	\begin{tabular}{rl}
+		\toprule
+		\textbf{work step} & \textbf{partial work step} \\
+		\midrule
+		Simple work step & something simple \\
+		& Something else simple \\
+		&\\
+		Somewhat more complicated work step & preparatory work \\
+		& Anything complicated \\
+		& Something more complicated \\
+		& Final work that is even more complicated \\
+		\bottomrule
+	\end{tabular}%
+	\label{tab:Beispieltab-1_EN}%
+\end{table}%
+
+
+The caption must clearly describe the table content so that the table can be understood on its own without continuous text. Any symbols used (formula symbols) must be introduced in the figure caption. For long table captions, \LaTeX{} provides the option of defining a short form for the table index, just as for figures.
+
+\begin{addmargin}[1cm]{1cm}
+	\textit{\textbf{Note:} Each table must be referenced in the body text. Tables that are not referenced must be removed}.
+\end{addmargin}
+
+If a table is taken from another source, this must be referenced in the table caption. However, you should avoid copying tables from other sources unchanged, as otherwise a uniform table style is not possible. It is better to take only the content of a table from a source and integrate it into a self-designed table. In this case, the source must also be referenced, e.g. in the form " `Contents from [XX]" ' (where \textit{XX} is a placeholder for the reference number).
+
+Tables must not protrude beyond the text width. In wider tables, the font size can be reduced within limits, see table \ref{tab:Beispieltab-2_EN}. However, care must always be taken to ensure legibility. The font size in table \ref{tab:Beispieltab-2_EN} is borderline. The font size should not be smaller. If the tables are very wide, they should be included in landscape format.
+
+\begin{table}[t]%[!htbp]
+	\tiny
+	\centering
+	\caption[Seven-column example table with small font]{Seven-column example table with small font so that the table fits into the text width. The font size within a table should not be smaller than in this example}.
+	\begin{tabular}{ccccccc}
+		\toprule
+		\textbf{heading 1} & \textbf{heading 2} & \textbf{heading 3} & \textbf{heading 4} & \textbf{Heading 5} & \textbf{Heading 6} & \textbf{heading 7} \\
+		\midrule
+		Content for heading 1 & Content for heading 2 & Content for heading 3 & Content for heading 4 & ... & ... & ... \\
+		Content for heading 1 & content for heading 2 & content for heading 3 & content for heading 4 & ... & ... & ... \\
+		Content for heading 1 & content for heading 2 & content for heading 3 & ... & ... & ... & ... \\
+		Content for heading 1 & Content for heading 2 & ... & ... & ... & ... & ... \\
+		Content for heading 1 & ... & ... & ... & ... & ... & ... \\
+		... & ... & ... & ... & ... & ... & ... \\
+		\bottomrule
+	\end{tabular}%
+	\label{tab:Beispieltab-2_EN}%
+\end{table}%
+
+
+
+There are countless ways in which a table can be designed in detail. For a uniform layout of tables, vertical lines should be avoided if they are not absolutely necessary. A horizontal line should be placed above and below the column labels and below the last table row, whereby the top and bottom lines should be slightly thicker, see table \ref{tab:Beispieltab-1_EN} and table \ref{tab:Beispieltab-2_EN}. Blank lines can be inserted for vertical delimitation, see table \ref{tab:Beispieltab-1_EN}. Alternatively, additional thin horizontal lines can be useful for dividing table blocks, see table \ref{tab:Beispieltab-3_EN} and table \ref{tab:Beispieltab-4_EN}.
+
+The horizontal alignment of columns (left-aligned, right-aligned or centered) must be considered on a case-by-case basis. The tables \ref{tab:Beispieltab-1_EN} to \ref{tab:Beispieltab-4_EN} show the various options, also in combination. Sometimes it can be useful to connect some rows vertically. An example of this is shown in table \ref{tab:Beispieltab-4_EN}. There, the cells in the first two columns are connected vertically, so that a row division is recognizable in the third column. In this case, the thin horizontal lines make the table easier to read.
+
+
+
+
+\begin{table}[!hbpt]
+	\tiny
+	\centering
+	\caption[Six-column example table with small font] {Six-column example table. The third column is left-aligned, all other columns are centered.}
+	\begin{tabular}{cclccc}
+		\toprule
+		\textbf{Zu\-ordnung} & \textbf{Pos.} & \textbf{Positionsbeschreibung} & \multicolumn{1}{c}{\textbf{GP [\EUR{}]}} & \multicolumn{1}{c}{\textbf{Prozent von GP}} & \multicolumn{1}{c}{\textbf{GP [\EUR{}]}} \\
+		\midrule
+		\multicolumn{1}{c}{\multirow{14}[0]{*}{A - Pos.}} & 3.5.10 & \multicolumn{1}{l}{Stb-Wand, C20/25; h = bis 19,05 m; d = 0,2 m herstellen} & \EUR{547.720,07} & \multicolumn{1}{c}{15,36\%} & \EUR{547.720,07} \\
+		\multicolumn{1}{c}{} & 1.2.10 & \multicolumn{1}{l}{Vorhalten der Baustelle} & \EUR{420.308,58} & \multicolumn{1}{c}{27,15\%} & \EUR{968.028,65} \\
+		\multicolumn{1}{c}{} & 4.2.10 & \multicolumn{1}{l}{Filigrandecke d = 0,05 m liefern und verlegen} & \EUR{312.057,83} & \multicolumn{1}{c}{35,90\%} & \EUR{1.280.086,48} \\
+		\multicolumn{1}{c}{} & 4.8.20 & \multicolumn{1}{l}{Stb-Stützen, C30/37, b/d = 0,6/0,9, h = 18,75 m herstellen} & \EUR{226.309,35} & \multicolumn{1}{c}{42,25\%} & \EUR{1.506.395,83} \\
+		\multicolumn{1}{c}{} & 4.2.20 & \multicolumn{1}{l}{Filigrandecke Maschinenhalle d = 0,05 m liefern u. verlegen} & \EUR{224.606,69} & \multicolumn{1}{c}{48,55\%} & \EUR{1.731.002,51} \\
+		\multicolumn{1}{c}{} & 3.3.10 & \multicolumn{1}{l}{Bodenplatte, Stb C30/37, d = 25 cm herstellen} & \EUR{173.623,54} & \multicolumn{1}{c}{53,41\%} & \EUR{1.904.626,06} \\
+		\multicolumn{1}{c}{} & 3.4.30 & \multicolumn{1}{l}{Stb-Stützen, C30/37, b/d = 0,6/2,8, h = 6,25 m herstellen} & \EUR{164.099,59} & \multicolumn{1}{c}{58,02\%} & \EUR{2.068.725,65} \\
+		\multicolumn{1}{c}{} & 4.2.60 & \multicolumn{1}{l}{Aufbeton der Decke EG d = 0,35 m herstellen} & \EUR{151.737,34} & \multicolumn{1}{c}{62,27\%} & \EUR{2.220.462,99} \\
+		\multicolumn{1}{c}{} & 2.1.20 & \multicolumn{1}{l}{Baugrubenaushub Bkl. 3-5, inkl. Abfuhr} & \EUR{134.779,63} & \multicolumn{1}{c}{66,05\%} & \EUR{2.355.242,63} \\
+		\multicolumn{1}{c}{} & 3.1.20 & \multicolumn{1}{l}{Einzelfundamente Stb C20/25, b/l = 2,10/2,80; h = 1,50 m} & \EUR{126.460,84} & \multicolumn{1}{c}{69,60\%} & \EUR{2.481.703,47} \\
+		\multicolumn{1}{c}{} & 4.6.10 & \multicolumn{1}{l}{Entwässerungsrinne: Breite 60 cm; Hmax = 1,50 m} & \EUR{115.367,81} & \multicolumn{1}{c}{72,83\%} & \EUR{2.597.071,28} \\
+		\multicolumn{1}{c}{} & 3.2.10 & \multicolumn{1}{l}{Streifenfundamente Stb C20/25 b = 1,40 m; l = 10 m, 70 m; h = 1,50 m} & \EUR{91.621,95} & \multicolumn{1}{c}{75,40\%} & \EUR{2.688.693,23} \\
+		\multicolumn{1}{c}{} & 1.1.10 & \multicolumn{1}{l}{Einrichten der Baustelle} & \EUR{88.494,12} & \multicolumn{1}{c}{77,88\%} & \EUR{2.777.187,35} \\
+		\multicolumn{1}{c}{} & 4.2.50 & \multicolumn{1}{l}{Aufbeton Maschinenhalle Stb C20/25 d = 0,15 m herstellen} & \EUR{86.053,13} & \multicolumn{1}{c}{80,30\%} & \EUR{2.863.240,48} \\
+		\midrule
+		\multicolumn{1}{c}{\multirow{9}[0]{*}{B - Pos.}} & 4.7.20 & \multicolumn{1}{l}{Stb-Stützen, C30/37, b/d = 0,6/0,6, h = 18,75 m herstellen} & \EUR{83.945,37} & \multicolumn{1}{c}{82,65\%} & \EUR{2.947.185,85} \\
+		\multicolumn{1}{c}{} & 4.4.10 & \multicolumn{1}{l}{Deckenunterzüge, Stb C35/45 , b/d = 0,6/0,8 m herstellen} & \EUR{72.332,54} & \multicolumn{1}{c}{84,68\%} & \EUR{3.019.518,39} \\
+		\multicolumn{1}{c}{} & 1.3.10 & \multicolumn{1}{l}{Räumen der Baustelle} & \EUR{71.922,97} & \multicolumn{1}{c}{86,70\%} & \EUR{3.091.441,36} \\
+		\multicolumn{1}{c}{} & 4.3.10 & \multicolumn{1}{l}{Spannbetonbinder C35/45 Hallendecke herstellen} & \EUR{65.125,35} & \multicolumn{1}{c}{88,52\%} & \EUR{3.156.566,71} \\
+		\multicolumn{1}{c}{} & 3.1.10 & \multicolumn{1}{l}{Einzelfundamente Stb C20/25, b/l = 1,60 /2,80; h = 1,50 m} & \EUR{52.688,79} & \multicolumn{1}{c}{90,00\%} & \EUR{3.209.255,50} \\
+		\multicolumn{1}{c}{} & 3.2.20 & \multicolumn{1}{l}{Streifenfundamente Stb C20/25, b/l = 0,6/4,8; h = 1,50 m} & \EUR{46.704,40} & \multicolumn{1}{c}{91,31\%} & \EUR{3.255.959,90} \\
+		\multicolumn{1}{c}{} & 4.7.10 & \multicolumn{1}{l}{Stb-Stützen, C30/37, b/d = 0,6/0,6, h = 10,95 m herstellen} & \EUR{44.146,46} & \multicolumn{1}{c}{92,55\%} & \EUR{3.300.106,36} \\
+		\multicolumn{1}{c}{} & 2.2.20 & \multicolumn{1}{l}{Trag.- und Frostschutzschicht liefern und herstellen} & \EUR{43.487,87} & \multicolumn{1}{c}{93,77\%} & \EUR{3.343.594,22} \\
+		\multicolumn{1}{c}{} & 4.8.10 & \multicolumn{1}{l}{Stb-Stützen, C30/37, b/d = 0,6/0,9, h = 6,25 m herstellen} & \EUR{42.400,87} & \multicolumn{1}{c}{94,96\%} & \EUR{3.385.995,09} \\
+		\bottomrule
+	\end{tabular}%
+	\label{tab:Beispieltab-3_EN}%
+\end{table}%
+
+
+\begin{table}[htbp!]
+	\centering
+	\caption[Three-column example table with group structure]{Three-column example table with group structure.}
+	\begin{tabularx}{\textwidth}{l l X}
+		\toprule
+		\textbf{Subject area} & \textbf{Core task} & \textbf{Task areas}\\
+		\midrule
+		Project Development & Development & Project development, Site Assessment, Feasibility Studies\\
+		\midrule
+		Project Management Coordination & Project Management & Contact person for the customer, Initiate invoicing, Project schedule planning, Implementation of contractual obligations, Disposition of construction site equipment if necessary, Crane disposition if necessary\\
+		\midrule
+		Civil Works & Earthworks & Design, inspection and acceptance of the foundation design and construction; Design, inspection and approval of the access route and crane installation area\\
+		\bottomrule
+	\end{tabularx}
+	\label{tab:Beispieltab-4_EN}
+\end{table}
+
+Table \ref{tab:Beispieltab-5_EN} is an example of a multi-page table that was created using the 'longtable' latex enviroment.
+
+
+\begin{longtable}{lcc}
+	\caption{Wind energy production by country \cite{elec}}\\
+	\toprule
+	\textbf{Country}             & \textbf{Wind power generation} & \textbf{Percentage of total energy} \\
+	& \textbf{(TWh)}                & \textbf{(\%)}                     \\
+	\midrule
+	\endfirsthead
+	\caption{(Continued) Wind energy production by country \cite{elec}}\\
+	\toprule
+	\textbf{Country}             & \textbf{Wind power generation} & \textbf{Percentage of total energy} \\
+	& \textbf{(TWh)}                & \textbf{(\%)}                     \\
+	\midrule
+	\endhead
+	World                     & 2098.46                       & 7.3                               \\
+	China                     & 762.70                        & 8.6                               \\
+	United States             & 434.30                        & 10.1                              \\
+	Germany                   & 124.91                        & 22.3                              \\
+	United Kingdom            & 80.26                         & 24.6                              \\
+	Brazil                    & 80.00                         & 11.8                              \\
+	India                     & 70.05                         & 3.8                               \\
+	Spain                     & 61.90                         & 21.7                              \\
+	France                    & 38.56                         & 8.2                               \\
+	Canada                    & 38.13                         & 6.0                               \\
+	Turkey                    & 35.14                         & 10.8                              \\
+	Sweden                    & 33.33                         & 19.4                              \\
+	Australia                 & 31.65                         & 11.6                              \\
+	Netherlands               & 21.49                         & 17.7                              \\
+	Italy                     & 20.28                         & 7.1                               \\
+	Mexico                    & 20.23                         & 5.8                               \\
+	Poland                    & 19.73                         & 11.0                              \\
+	Denmark                   & 18.93                         & 55.0                              \\
+	Norway                    & 15.90                         & 10.4                              \\
+	Argentina                 & 14.02                         & 9.8                               \\
+	Portugal                  & 13.28                         & 28.3                              \\
+	Belgium                   & 12.16                         & 12.8                              \\
+	Finland                   & 11.72                         & 16.1                              \\
+	Ireland                   & 11.18                         & 33.3                              \\
+	Greece                    & 10.87                         & 20.8                              \\
+	South Africa              & 9.69                          & 4.5                               \\
+	Chile                     & 8.82                          & 10.6                              \\
+	Japan                     & 8.17                          & 0.8                               \\
+	Vietnam                   & 8.04                          & 3.1                               \\
+	Romania                   & 6.97                          & 12.6                              \\
+	Austria                   & 6.96                          & 10.6                              \\
+	Russia                    & 5.51                          & 0.5                               \\
+	Morocco                   & 5.11                          & 12.4                              \\
+	Uruguay                   & 4.80                          & 30.5                              \\
+	Egypt                     & 4.23                          & 2.0                               \\
+	Pakistan                  & 4.12                          & 2.7                               \\
+	Taiwan                    & 3.50                          & 1.2                               \\
+	South Korea               & 3.37                          & 0.6                               \\
+	New Zealand               & 3.20                          & 7.3                               \\
+	Thailand                  & 3.00                          & 1.6                               \\
+	Kazakhstan                & 2.28                          & 2.0                               \\
+	Croatia                   & 2.28                          & 16.1                              \\
+	Peru                      & 1.96                          & 3.3                               \\
+	Kenya                     & 1.68                          & 13.6                              \\
+	Lithuania                 & 1.59                          & 38.0                              \\
+	Jordan (2021)             & 1.57                          & 7.2                               \\
+	Bulgaria                  & 1.44                          & 2.9                               \\
+	Costa Rica                & 1.36                          & 10.8                              \\
+	Dominican Republic (2021) & 1.29                          & 7.3                               \\
+	Iran                      & 1.25                          & 0.4                               \\
+	Philippines               & 0.95                          & 0.8                               \\
+	Serbia                    & 0.94                          & 2.7                               \\
+	Ukraine                   & 0.83                          & 0.7                               \\
+	Honduras (2021)           & 0.80                          & 6.7                               \\
+	Panama (2021)             & 0.66                          & 5.9                               \\
+	Czech Republic            & 0.65                          & 0.8                               \\
+	Estonia                   & 0.63                          & 7.5                               \\
+	Nicaragua (2021)          & 0.63                          & 13.6                              \\
+	Ethiopia (2021)           & 0.61                          & 4.2                               \\
+	Hungary                   & 0.61                          & 1.7                               \\
+	Bolivia                   & 0.48                          & 4.3                               \\
+	Tunisia                   & 0.42                          & 2.1                               \\
+	Mongolia                  & 0.42                          & 5.8                               \\
+	Bosnia and Herzegovina    & 0.39                          & 2.4                               \\
+	Sri Lanka (2021)          & 0.37                          & 2.3                               \\
+	Indonesia                 & 0.36                          & 0.1                               \\
+	Guatemala (2021)          & 0.32                          & 2.2                               \\
+	Luxembourg                & 0.31                          & 25.2                              \\
+	Montenegro                & 0.31                          & 9.4                               \\
+	Jamaica (2021)            & 0.30                          & 6.9                               \\
+	Senegal (2021)            & 0.25                          & 4.5                               \\
+	Cyprus                    & 0.22                          & 4.2                               \\
+	Latvia                    & 0.19                          & 3.8                               \\
+	\bottomrule
+	\label{tab:Beispieltab-5_EN}
+\end{longtable}
+
+

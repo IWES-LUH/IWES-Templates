@@ -1,0 +1,68 @@
+\chapter{Figures}
+\label{cha:Images_EN}
+
+
+
+
+The graphical representation of results or contexts is an important tool in scientific papers. Figures can be integrated into the body text of a paper in various ways. The most common way is to center the figure and set it apart from the text. Figure \ref{fig:centered_EN} is integrated in this way as an example.
+
+\begin{figure}[!hb]
+	\centering
+	\includegraphics[width=0.4\linewidth, height=0.4\textheight, keepaspectratio]{figures/example-image.pdf}
+	\caption[Centered and offset from the text]{Centered and offset from the text}.
+	\label{fig:centered_EN}
+\end{figure}
+
+Images must always be included in a size that ensures that text and details remain legible and recognizable. Ideally, font sizes in images should be based on the font size of the body text. If necessary, they can be one font size smaller than the body text. 
+
+\begin{wrapfigure}[12]{l}{0.41\textwidth}
+	\begin{minipage}{0.95\linewidth}
+		\vspace{-\baselineskip}
+		\includegraphics[width=\textwidth, keepaspectratio]{figures/example-image.pdf}
+		\caption[Floated figure.]{Floated figure.}
+		\label{fig:wrapped-left_EN}
+	\end{minipage}\hfill
+\end{wrapfigure}
+
+
+If originally colored illustrations are printed in black and white, sufficient differentiation of the relationships must be ensured. This can be achieved, for example, by using different line types (solid, dashed or dotted lines) in diagrams with more than one curve. 
+
+Text-wrapped figures, see figure \ref{fig:wrapped-left_EN}, are generally possible. However, these are only suitable for small or vertically aligned figures that do not take up more than half of the text width horizontally. With wrapped images, it is often difficult to adjust the distances to the text, especially in the vertical direction. In the figure \ref{fig:wrapped-left_EN}, for example, you can see that the caption does not end exactly at the bottom of the page. Therefore, wrapped images should generally be avoided.
+
+It is possible to display several narrow figures within one figure, see figure \ref{fig:subfigure_EN}. This arrangement is also called \textit{Subfigure} configuration. In this case, each subfigure must be numbered with Roman letters, which must be placed in round brackets in the middle below each subfigure. The figure caption must contain the content of both subfigures and refer to the letter numbering, see also the figure caption for figure \ref{fig:subfigure_EN}. A subfigure configuration must be centered, whereby an attempt is usually made to use the full text width.
+
+
+\begin{figure}[!htbp]
+	\centering
+	\begin{subfigure}[b]{0.4\linewidth}
+		\centering
+		\includegraphics[width=\linewidth, keepaspectratio]{figures/example-image.pdf}
+		\caption{}
+	\end{subfigure}
+	\hspace{0.5cm}
+	\begin{subfigure}[b]{0.4\linewidth}
+		\centering
+		\includegraphics[width=\linewidth, keepaspectratio]{figures/example-image.pdf}
+		\caption{}
+	\end{subfigure}
+	\caption[Centered image offset from the text with two sub-images, the so-called subfigure configuration. (a) Example image arranged on the left. (b) Example image arranged on the right.]{Centered and offset from the text with two sub-images, the so-called subfigure configuration. (a) Example image arranged on the left. (b) Example image arranged on the right. A little more text, which is omitted in the list of figures.}
+	\label{fig:subfigure_EN}
+\end{figure}
+
+
+
+A figure caption must describe the figure in such a way that the figure can be understood on its own without the body text. If, for example, the axes of graphs are labeled with symbols (formula symbols), the symbols must also be introduced in the figure caption, see also section \ref{cha:Formulae}. For long figure captions, \LaTeX{} offers the useful option of including a short form in the list of figures, see also the entry in the list of figures for figure \ref{fig:subfigure_EN}.
+
+The figure caption should be placed below the figure and formatted in justified text with a hanging indent. The hanging indent should be set so that the text is left-aligned after the figure numbering, see also the figure caption for figure \ref{fig:subfigure_EN}.
+
+If a figure is not self-created, the source must be referenced in the figure caption. Otherwise it is considered plagiarism. A figure without a reference is considered to be self-created. It is not to be noted separately in the caption, e.g. with the addition " `self-created" '. 
+
+In principle, reference must be made to each figure in the text. Illustrations without reference are to be removed. The content or the purpose of inclusion of each illustration must be at least briefly described or named in the body text. 
+
+
+
+
+
+
+
+

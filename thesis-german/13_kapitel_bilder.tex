@@ -1,0 +1,53 @@
+\chapter{Abbildungen}
+\label{cha:Images_DE}
+
+Die grafische Darstellung von Ergebnissen oder Zusammenhängen ist in wissenschaftlichen Arbeiten ein wichtiges Mittel. Abbildungen können auf verschiedene Art und Weise in den Fließtext einer Arbeit integriert werden. Am häufigsten wird die zentrierte und vom Text abgesetzte Einbindung verwendet. Exemplarisch ist Abbildung \ref{fig:centered_DE} auf diese Weise eingebunden.
+
+\begin{figure}[!hb]
+	\centering
+	\includegraphics[width=0.4\linewidth, height=0.4\textheight, keepaspectratio]{figures/example-image.pdf}
+	\caption[Zentrierte und vom Text abgesetzte Abbildung.]{Zentrierte und vom Text abgesetzte Abbildung.}
+	\label{fig:centered_DE}
+\end{figure}
+
+Abbildungen müssen immer in einer Größe eingebunden werden, dass Texte und Details lesbar bzw. erkennbar bleiben. Idealerweise orientieren sich Schriftgrößen in Abbildungen an der Schriftgröße des Fließtextes. Ggf. kann sie eine Schriftgröße kleiner ausfallen als der Fließtext. 
+
+\begin{wrapfigure}[12]{l}{0.41\textwidth}
+	\begin{minipage}{0.95\linewidth}
+		\vspace{-\baselineskip}
+		\includegraphics[width=\textwidth, keepaspectratio]{figures/example-image.pdf}
+		\caption[Umflossene Abbildung.]{Umflossene Abbildung.}
+		\label{fig:wrapped-left_DE}
+	\end{minipage}\hfill
+\end{wrapfigure}
+
+Werden ursprünglich farbige Abbildungen schwarzweiß gedruckt, muss eine ausreichende Unterscheidbarkeit der Zusammenhänge gewährleistet bleiben. Dies kann z. B. durch Verwendung unterschiedlicher Linienarten (durchgehende, gestrichelte oder gepunktete Linien) in Diagrammen mit mehr als einer Kurve umgesetzt werden. 
+
+Mit Text umflossene Abbildungen, s. Abbildung \ref{fig:wrapped-left_DE}, sind grundsätzlich möglich. Diese eignen sich allerdings nur für kleine oder vertikal ausgerichtete Abbildungen, die horizontal nicht mehr als die Hälfte der Textbreite in Anspruch nehmen. Bei umflossenen Abbildungen ist die Anpassung der Abstände zum Text häufig schwierig, insbesondere in vertikaler Richtung. Im Abbildung \ref{fig:wrapped-left_DE} ist beispielsweise zu erkennen, dass die Beschriftung nicht genau am Seitenende endet. Daher sollte im Allgemeinen auf umflossene Abbildungen verzichtet werden.
+
+Es gibt die Möglichkeit, mehrere schmale Abbildungen innerhalb einer Abbildung darzustellen, s. Abbildung \ref{fig:subfigure_DE}. Diese Anordnung nennt man auch \textit{Subfigure}-Konfiguration. In diesem Fall ist jede Teilabbildung (Subfigure) mit römischen Buchstaben, die in runden Klammern mittig unterhalb jeder Teilabbildung zu setzen sind, zu nummerieren. Die Abbildungsbeschriftung muss den Inhalt beider Teilabbildungen enthalten und auf die Buchstabennummerierung verweisen, s. auch die Abbildungsbeschriftung zu Abbildung \ref{fig:subfigure_DE}. Eine Subfigure-Konfiguration ist zu zentrieren, wobei üblicherweise versucht wird, die vollständige Textbreite zu nutzen.
+
+\begin{figure}[!htbp]
+	\centering
+	\begin{subfigure}[b]{0.4\linewidth}
+		\centering
+		\includegraphics[width=\linewidth, keepaspectratio]{figures/example-image.pdf}
+		\caption{}
+	\end{subfigure}
+	\hspace{0.5cm}
+	\begin{subfigure}[b]{0.4\linewidth}
+		\centering
+		\includegraphics[width=\linewidth, keepaspectratio]{figures/example-image.pdf}
+		\caption{}
+	\end{subfigure}
+	\caption[Zentrierte und vom Text abgesetzte Abbildung mit zwei Unterabbildungen, die sogenannte Subfigure-Konfiguration. (a) Beispielbild links angeordnet. (b) Beispielbild rechts angeordnet.]{Zentrierte und vom Text abgesetzte Abbildung mit zwei Unterabbildungen, die sogenannte Subfigure-Konfiguration. (a) Beispielbild links angeordnet. (b) Beispielbild rechts angeordnet. Ein bisschen mehr Text, der im Abbildungsverzeichnis entfällt.}
+	\label{fig:subfigure_DE}
+\end{figure}
+
+Eine Abbildungsunterschrift muss die Abbildung so beschreiben, dass auch ohne den Fließtext die Abbildung für sich stehend verständlich ist. Wenn z. B. bei Graphen die Achsen mit Symbolen (Formelzeichen) beschriftet werden, sind die Symbole auch in der Abbildungsbeschriftung einzuführen, s. auch Abschnitt \ref{cha:Formeln}. Bei langen Abbildungsbeschriftungen bietet \LaTeX{} die zweckmäßige Möglichkeit, eine Kurzform in das Abbildungsverzeichnis zu übernehmen, s. auch den Eintrag im Abbildungsverzeichnis für Abbildung \ref{fig:subfigure_DE}.
+
+Die Abbildungsbeschriftung ist unterhalb der Abbildung zu platzieren und im Blocksatz mit hängendem Einzug zu formatieren. Der hängende Einzug ist so einzustellen, dass der Text linksbündig nach der Abbildungsnummerierung ausgerichtet ist, s. auch die Abbildungsbeschriftung zu Abbildung \ref{fig:subfigure_DE}.
+
+Ist eine Abbildung nicht selbst erstellt, ist die Quelle in der Abbildungsbeschriftung zu referenzieren. Anderenfalls handelt es sich um ein Plagiat. Eine Abbildung ohne Quellenangabe wird als selbst erstellt aufgefasst. Es ist nicht gesondert in der Abbildungsbeschriftung zu vermerken, z. B. durch den Zusatz " `selbst erstellt" '. 
+
+Grundsätzlich ist auf jede Abbildung im Text zu verweisen. Abbildungen ohne Verweis sind zu entfernen. Der Inhalt bzw. der Einbindungs-Zweck jeder Abbildung ist im Fließtext zumindest kurz zu beschreiben bzw. zu benennen. 

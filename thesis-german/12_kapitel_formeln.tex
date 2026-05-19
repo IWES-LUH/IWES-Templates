@@ -1,0 +1,66 @@
+\chapter{Formeln}
+\label{cha:Formeln}
+
+Bei der Herleitung von Berechnungs- und/oder Simulationsmodellen ist auf eine mathematische Formulierung zurückzugreifen. Hierfür werden in der Regel Formeln benötigt. Formeln sind als Satzbestandteile zu behandeln und können entweder in den Fließtext eingebunden oder abgesetzt mit Nummerierung dargestellt werden. Es ist zwingend darauf zu achten, dass alle Formelzeichen (Symbole) im Fließtext eingeführt werden, und zwar an der Stelle, wo sie zum ersten Mal verwendet werden.
+
+\begin{addmargin}[1cm]{1cm}
+	\textit{\textbf{Beispiel:} Eine in den Fließtext eingebundene Formel kann z. B. der Satz des Pythagoras sein, der durch die Gleichung $a^2+b^2=c^2$ ausgedrückt wird, wobei $a$ und $b$ die Katheten und $c$ die Hypotenuse eines rechtwinkligen Dreiecks sind.}
+\end{addmargin}
+
+Der Satz des Pythagoras kann auch als abgesetzte und nummerierte Formel in der Form
+
+\begin{equation}
+	a^2+b^2=c^2
+	\label{eq:pythagoras_DE}
+\end{equation}
+
+dargestellt werden. Auf eine in den Fließtext eingebettete Gleichung kann im Text nicht verwiesen werden. Daher ist darauf zu achten, dass Gleichungen, auf die Bezug genommen werden soll, in abgesetzter Form eingebunden werden. Bei einem Verweis auf eine Gleichung ist die Gleichungsnummer in runden Klammern zu referenzieren. 
+
+\begin{addmargin}[1cm]{1cm}
+	\textit{\textbf{Beispiel:} Gleichung (\ref{eq:pythagoras_DE}) zeigt den Satz des Pythagoras.}
+\end{addmargin}
+
+In einigen Fällen kann es zweckmäßig sein, einen Satz an Gleichungen mit ausgerichteten Gleichheitszeichen einzubinden, in der jede einzelne Gleichung eine eigene Nummer bekommt. Als Beispiel seien die allgemein bekannten binomischen Formeln in der Form
+
+\begin{align}
+(a+b)^2 & = a^2 + 2ab + b^2 \, , \label{eq:bin-1_DE} \\
+(a-b)^2 & = a^2 - 2ab + b^2 \, , \label{eq:bin-2_DE} \\
+(a+b)(a-b) & = a^2 - b^2 \, . \label{eq:bin-3_DE} 
+\end{align}
+
+Hierin sind $a$ und $b$ beliebige Variablen. Wie oben bereits erwähnt wurde, müssen Gleichungen immer als Satzbestandteil behandelt werden. Dies wird durch die Satzverbindungs- und Satzendezeichen (Kommas und Punkt) am Ende der Gleichungen (\ref{eq:bin-1_DE}), (\ref{eq:bin-2_DE}) und (\ref{eq:bin-3_DE}) deutlich. Matrizen sind auch häufig verwendete Optionen. Die Einheitsmatrix $\mathbf{I}$ wäre in abgesetzter Form beispielsweise durch den Ausdruck
+
+\begin{equation}
+	\mathbf{I} = 
+	\left[ \begin{matrix}
+		1 & 0 & 0 \\
+		0 & 1 & 0 \\
+		0 & 0 & 1 \\
+	\end{matrix} \right]
+\end{equation}
+
+einzuführen. Grundsätzlich sind Vektoren durch fettgedruckte Kleinbuchstaben, Tensoren und Matrizen durch fettgedruckte Großbuchstaben zu kennzeichnen. Ausnahmen können u. U. griechische Buchstaben bilden, da mechanische Spannungen und Verzerrungen, obwohl sie tensorielle Größen sind, häufig durch die kleinen griechischen Buchstaben $\boldsymbol{\sigma}$ und $\boldsymbol{\varepsilon}$ ausgedrückt werden.
+
+Wenn lange Gleichungen oder Gleichungen mit Umformungen so lang werden, dass sie nicht in eine Zeile passen, sollten sie mit ausgerichtetem Gleichheitszeichen auf mehrere Zeilen aufgeteilt werden. Schreibt man die erste binomische Formel, s. Gleichung (\ref{eq:bin-1_DE}),  mit Zwischenschritten, wird daraus beispielsweise der Ausdruck
+
+\begin{equation}
+	\begin{split}
+		(a+b)^2 &= (a+b)(a+b)\\
+		&= a^2 + ab + ab + b^2 = a^2 + 2ab + b^2 \,.
+	\end{split}
+\end{equation}
+
+Die Einbindung von Brüchen, Produkten oder Integralen seien ebenfalls beispielhaft dargestellt durch die Beziehungen
+
+\begin{equation}
+	\binom{n}{k} = \frac{\displaystyle\prod_{i=1}^n i}{\displaystyle\prod_{i=1}^k i\cdot
+		\prod_{i=1}^{n-k} i}
+\end{equation}
+
+und
+
+\begin{equation}
+	\int_0^5\limits \left(x^2 +x+1\right) \mathrm{d}x = \left. \frac{1}{3} x^3 + \frac{1}{2} x^2 + x + c \; \right|_0^5 = \frac{355}{6} + c \, ,
+\end{equation}
+
+wobei $x$ eine Variable und $c$ eine Integrationskonstante ist.
