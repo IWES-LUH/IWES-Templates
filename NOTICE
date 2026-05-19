@@ -1,0 +1,47 @@
+NOTICE
+======
+
+This repository is licensed under the MIT License (see LICENSE).
+The following components are explicitly excluded from that license:
+
+-------------------------------------------------------------------------------
+LOGOS AND INSTITUTIONAL MARKS
+-------------------------------------------------------------------------------
+
+The following files are the property of Leibniz Universität Hannover (LUH)
+and the Institut für Windenergiesysteme (IWES) and are protected by trademark
+and copyright law:
+
+  beamer/01-LUH-Logo.pdf
+  beamer/02-IWES-Logo.pdf
+  poster/01-LUH-Logo.pdf
+  poster/02-IWES-Logo.pdf
+  thesis-english/figures/logo_luh.pdf
+  thesis-english/figures/logo_iwes.pdf
+  thesis-german/figures/logo_luh.pdf
+  thesis-german/figures/logo_iwes.pdf
+
+These files are included solely to allow the templates to compile and render
+correctly. They may NOT be:
+
+  - used outside of official LUH / IWES publications or materials,
+  - modified, recoloured, or distorted,
+  - redistributed as stand-alone assets, or
+  - used in any way that implies endorsement by LUH or IWES.
+
+Any redistribution of this repository or its derived works must retain this
+NOTICE and must not remove or replace the logos with content that implies
+affiliation with LUH or IWES where none exists.
+
+For questions regarding permitted use of the LUH or IWES identity, contact:
+  Leibniz Universität Hannover — https://www.uni-hannover.de
+  Institut für Windenergiesysteme — https://www.iwes.uni-hannover.de
+
+-------------------------------------------------------------------------------
+FONTS
+-------------------------------------------------------------------------------
+
+The Rotis Sans Serif Std typeface (referenced but NOT included in this
+repository) is a commercially licensed font by Albert-Jan Pool / Monotype.
+It is NOT covered by the MIT License and must be obtained separately under
+its own license terms.

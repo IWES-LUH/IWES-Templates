@@ -32,6 +32,7 @@
 % ============================================================================
 
 \usepackage{pgfgantt}
+\usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage[T1]{fontenc}
 \usepackage{tgheros}
@@ -43,9 +44,18 @@
 
 \begin{document}
 
-{\centering\large\bfseries\color{mainblue}\ProjectTitle\par}
+\noindent
+\begin{minipage}[c]{2.5cm}%
+    \includegraphics[height=0.75cm]{02-IWES-Logo.pdf}%
+\end{minipage}%
+\begin{minipage}[c]{\dimexpr\textwidth-5cm\relax}%
+    \centering\large\bfseries\color{mainblue}\ProjectTitle%
+\end{minipage}%
+\begin{minipage}[c]{2.5cm}%
+    \raggedleft\includegraphics[height=0.75cm]{01-LUH-Logo.pdf}%
+\end{minipage}
 
-\vspace{0.25cm}
+\vspace{0.2cm}
 
 % \hspace*{-3.9cm} shifts the canvas left by the label area (3.7 cm text + 0.2 cm gap)
 % so the chart bars start exactly at the text margin rather than 3.9 cm to its right.
@@ -56,7 +66,7 @@
     % Labels: 3.7 cm wide + 0.2 cm gap, extending into the 5 cm left margin.
     x unit          = 1.08cm,
     y unit title    = 0.60cm,
-    y unit chart    = 0.73cm,
+    y unit chart    = 0.71cm,
     % ── Grid ─────────────────────────────────────────────────────────────────
     hgrid           = {draw=gray!30, line width=0.4pt},
     vgrid           = {*3{draw=gray!20, line width=0.4pt},

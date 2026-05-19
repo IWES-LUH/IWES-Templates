@@ -22,6 +22,7 @@ jobs:
           zip -r beamer.zip         beamer/
           zip -r poster.zip         poster/
           zip -r gannt.zip          gannt/
+          zip -r powerpoint.zip     powerpoint/
 
       - name: Force-update 'latest' tag
         run: |
@@ -47,6 +48,7 @@ jobs:
             | `beamer.zip`         | Beamer presentation slides |
             | `poster.zip`         | A0 scientific poster |
             | `gannt.zip`          | Gantt chart (landscape A4) |
+            | `powerpoint.zip`     | PowerPoint slides (Arial + Rotis variants) |
 
             ## Overleaf
             Download a zip → Overleaf **New Project → Upload Project**.
@@ -60,4 +62,5 @@ jobs:
             beamer.zip
             poster.zip
             gannt.zip
+            powerpoint.zip
           make_latest: true
