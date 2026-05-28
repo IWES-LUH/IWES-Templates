@@ -24,12 +24,12 @@ Further instructions and usage notes are provided directly inside the template f
 
 New to LaTeX? The **[Overleaf LaTeX tutorials](https://www.overleaf.com/learn/latex/Tutorials)** cover everything from basic documents to figures, tables, and references.
 
-## Fonts
+<!-- ## Fonts
 
 Templates can use **Rotis Sans Serif Std** (commercial license, not included).
 The template compiles fine without it using a fallback font.
 If you have the fonts, place the `.otf` files in the `font/` or `Rotis/` folder — see `FONTS.md` there.
-Rotis requires a Unicode-aware compiler: **LuaLaTeX** or **XeLaTeX** (not pdflatex).
+Rotis requires a Unicode-aware compiler: **LuaLaTeX** or **XeLaTeX** (not pdflatex). -->
 
 ## LUH Corporate Design
 

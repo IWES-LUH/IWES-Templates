@@ -10,7 +10,7 @@
 % Wide left margin (5 cm) holds task labels; \hspace*{-3.9cm} before the chart
 % cancels the label-width so the canvas aligns to the text margin on the left
 % and fills to the right margin (29.7 - 5 - 0.9 = 23.8 cm canvas width).
-\usepackage[a4paper, landscape, left=5cm, right=0.9cm, top=1.2cm, bottom=1.2cm]{geometry}
+\usepackage[a4paper, landscape, left=5cm, right=0.9cm, top=1.0cm, bottom=1.0cm]{geometry}
 
 % ============================================================================
 % PARAMETERS — edit this section for each new project
@@ -21,7 +21,7 @@
 % ============================================================================
 % HOW TO EDIT THE CHART
 % ─────────────────────────────────────────────────────────────────────────────
-% Time units are weeks (22 weeks ≈ 5 months).
+% Time units are weeks (22 weeks ≈ 5 months).  Week 1 = 3 Feb 2025.
 % Adjust the month titles in the HEADER ROWS section to your actual dates.
 %
 % Add a task:      \ganttbar{Label}{start week}{end week} \\
@@ -40,33 +40,34 @@
 
 \definecolor{mainblue}{RGB}{23,81,157}
 
+% Global base font size: 8 pt
+\AtBeginDocument{\fontsize{8}{9.6}\selectfont}
+
 \pagestyle{empty}
 
 \begin{document}
 
 \noindent
 \begin{minipage}[c]{2.5cm}%
-    \includegraphics[height=0.75cm]{02-IWES-Logo.pdf}%
+    \includegraphics[height=0.70cm]{02-IWES-Logo.pdf}%
 \end{minipage}%
 \begin{minipage}[c]{\dimexpr\textwidth-5cm\relax}%
-    \centering\large\bfseries\color{mainblue}\ProjectTitle%
+    \centering\fontsize{9}{10.8}\selectfont\bfseries\color{mainblue}\ProjectTitle%
 \end{minipage}%
 \begin{minipage}[c]{2.5cm}%
-    \raggedleft\includegraphics[height=0.75cm]{01-LUH-Logo.pdf}%
+    \raggedleft\includegraphics[height=0.70cm]{01-LUH-Logo.pdf}%
 \end{minipage}
 
-\vspace{0.2cm}
+\vspace{0.15cm}
 
 % \hspace*{-3.9cm} shifts the canvas left by the label area (3.7 cm text + 0.2 cm gap)
-% so the chart bars start exactly at the text margin rather than 3.9 cm to its right.
 \noindent\hspace*{-3.9cm}%
 \begin{ganttchart}[
     % ── Sizing ───────────────────────────────────────────────────────────────
-    % Canvas: 22 × 1.08 cm = 23.76 cm ≈ available 23.8 cm (29.7 - 5 - 0.9).
-    % Labels: 3.7 cm wide + 0.2 cm gap, extending into the 5 cm left margin.
+    % Canvas: 22 × 1.08 cm = 23.76 cm ≈ available 23.8 cm (29.7 − 5 − 0.9).
     x unit          = 1.08cm,
-    y unit title    = 0.60cm,
-    y unit chart    = 0.71cm,
+    y unit title    = 0.52cm,   % two header rows × 0.52 = 1.04 cm total
+    y unit chart    = 0.60cm,
     % ── Grid ─────────────────────────────────────────────────────────────────
     hgrid           = {draw=gray!30, line width=0.4pt},
     vgrid           = {*3{draw=gray!20, line width=0.4pt},
@@ -80,39 +81,52 @@
                        *3{draw=gray!20, line width=0.4pt},
                        {draw=gray!20, line width=0.4pt}},
     % ── Title bar ────────────────────────────────────────────────────────────
+    % NOTE: title/.append style colours the full cell background.
+    % Per-cell appearance is achieved via text formatting inline (bold, color),
+    % NOT via fill= on \gantttitle (which only colours the small label node).
     title height    = 1,
-    title/.append style        = {fill=mainblue!12, draw=mainblue!30, line width=0.5pt},
-    title label font           = \small\bfseries\color{mainblue},
-    title label node/.append style = {below=1pt},
+    title/.append style        = {fill=mainblue!12, draw=mainblue!35, line width=0.5pt},
+    title label font           = \fontsize{7}{8.4}\selectfont\color{mainblue!70},
+    title label node/.append style = {inner sep=1pt},
     % ── Bars ─────────────────────────────────────────────────────────────────
-    bar height      = 0.55,
-    bar top shift   = 0.225,
+    bar height      = 0.50,
+    bar top shift   = 0.25,
     bar/.append style          = {fill=mainblue!65, rounded corners=1.5pt, draw=none},
     % ── Groups ───────────────────────────────────────────────────────────────
     group/.append style        = {fill=mainblue, draw=none},
     group left shift           = 0,
     group right shift          = 0,
-    group height               = 0.4,
-    group peaks height         = 0.18,
+    group height               = 0.32,
+    group peaks height         = 0.14,
     group peaks tip position   = 0,
     % ── Milestones ───────────────────────────────────────────────────────────
-    milestone/.append style    = {fill=red!75!black, shape=diamond, scale=0.9, draw=none},
+    milestone/.append style    = {fill=red!75!black, shape=diamond, scale=0.85, draw=none},
     milestone left shift       = 0.5,
     milestone right shift      = -0.5,
-    milestone height           = 0.55,
-    milestone top shift        = 0.225,
-    % ── Labels ───────────────────────────────────────────────────────────────
-    bar label font             = \small,
-    bar label node/.append style       = {text width=3.7cm, align=right, left=0.2cm},
-    group label font           = \small\bfseries,
-    group label node/.append style     = {text width=3.7cm, align=right, left=0.2cm},
-    milestone label font       = \small\itshape,
-    milestone label node/.append style = {text width=3.7cm, align=right, left=0.2cm},
+    milestone height           = 0.50,
+    milestone top shift        = 0.25,
+    % ── Labels (8 pt, node width 3.7 cm right-aligned into the left margin) ──
+    % execute at begin node suppresses hyphenation so breaks fall on spaces only.
+    bar label font             = \fontsize{8}{9.6}\selectfont,
+    bar label node/.append style       = {text width=3.7cm, align=right, left=0.2cm,
+                                          execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+    group label font           = \fontsize{8}{9.6}\bfseries\selectfont,
+    group label node/.append style     = {text width=3.7cm, align=right, left=0.2cm,
+                                          execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+    milestone label font       = \fontsize{8}{9.6}\itshape\selectfont,
+    milestone label node/.append style = {text width=3.7cm, align=right, left=0.2cm,
+                                          execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
 ]{1}{22}
 
-% ── HEADER ROWS ──────────────────────────────────────────────────────────────
-\gantttitle{February}{4}\gantttitle{March}{5}\gantttitle{April}{4}%
-\gantttitle{May}{5}\gantttitle{June}{4} \\
+% ── HEADER ROW 1 — Month names ───────────────────────────────────────────────
+% Bold + darker colour is set in the label text; the cell background comes
+% entirely from the global title/.append style above (fills the full cell).
+\gantttitle{\fontsize{7.5}{9}\bfseries\color{mainblue}February}{4}%
+\gantttitle{\fontsize{7.5}{9}\bfseries\color{mainblue}March}{5}%
+\gantttitle{\fontsize{7.5}{9}\bfseries\color{mainblue}April}{4}%
+\gantttitle{\fontsize{7.5}{9}\bfseries\color{mainblue}May}{5}%
+\gantttitle{\fontsize{7.5}{9}\bfseries\color{mainblue}June}{4} \\
+% ── HEADER ROW 2 — Week numbers ──────────────────────────────────────────────
 \gantttitlelist{1,...,22}{1} \\
 
 % ── PHASE 1 ──────────────────────────────────────────────────────────────────
