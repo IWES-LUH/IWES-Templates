@@ -144,6 +144,31 @@
 \usepackage{multirow}
 \usepackage{multicol}
 
+%=== KI-Dokumentation ==================================
+% Spaltentyp und Boxen für die Dokumentation des KI-Einsatzes (91_ki_dokumentation.tex)
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable, skins}
+\definecolor{kiakzent}{rgb}{0.0,0.314,0.608}   % LUH-Blau
+% Prompt-Box:   \begin{kiprompt}[Titel] ... \end{kiprompt}
+\newtcolorbox{kiprompt}[1][Prompt]{%
+    enhanced, breakable, sharp corners,
+    colback=kiakzent!6, colframe=kiakzent, boxrule=0pt, leftrule=2.5pt,
+    left=6pt, right=6pt, top=4pt, bottom=4pt,
+    fonttitle=\bfseries\footnotesize, coltitle=kiakzent, colbacktitle=kiakzent!6,
+    title={#1}, attach title to upper={\par\smallskip}, fontupper=\small,
+    before skip=6pt, after skip=4pt,
+}
+% Antwort-Box:  \begin{kiantwort}[Titel] ... \end{kiantwort}
+\newtcolorbox{kiantwort}[1][Antwort]{%
+    enhanced, breakable, sharp corners,
+    colback=black!3, colframe=black!45, boxrule=0pt, leftrule=2.5pt,
+    left=6pt, right=6pt, top=4pt, bottom=4pt,
+    fonttitle=\bfseries\footnotesize, coltitle=black!60,
+    title={#1}, attach title to upper={\par\smallskip}, fontupper=\small,
+    before skip=4pt, after skip=10pt,
+}
+
 %=== Grafiken ==========================================
 \usepackage{graphicx}
 \graphicspath{{figures/}}   % Bilderpfad

@@ -1,0 +1,133 @@
+% Documentation of AI Usage (Appendix)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Based on the LUH guideline "KI-Tools richtig dokumentieren"
+% https://www.uni-hannover.de/fileadmin/luh/content/online-lehre/LUH_Handreichung_Dokumentation_KI-Einsatz.pdf
+%
+% IMPORTANT: Your supervisor decides how AI usage must be documented
+% (e.g. whether prompts or chat logs have to be included). Check beforehand!
+%
+% If you did NOT use any AI tools:
+%   - comment out \input{91_ai_documentation.tex} in 00_main.tex
+%   - remove the reference to this appendix in 03_declaration.tex
+%
+% Table columns (following the LUH guideline):
+%   No.              consecutive number (to reference from footnotes/chat logs)
+%   AI tool          tool name and provider, incl. link (model/version if known)
+%   Purpose          short description of what the tool was used for
+%   Affected parts   which sections or whole chapters were affected
+%   Date & prompt    date of use; prompt depending on purpose/supervisor's requirements
+%   Remarks          depth of processing or pointer to more detailed documentation
+%
+% The rows below are examples — delete tools you did not use, add your own.
+%
+% Further sources (cited in the guideline):
+%   - Universität Basel, Vizerektorat Lehre: "Leitfaden 'aus KI' zitieren", June 2024
+%   - Baresel et al.: "KI-Gebrauch im Studienkontext dokumentieren", 29 Nov 2024
+%   - Frankfurt UAS: "Lehren, Lernen und Schreiben mit generativen KI-Anwendungen", 11 Mar 2024
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Documentation of AI Usage}
+\label{cha:AI-Documentation}
+
+AI tools were used as aids in this thesis. To keep the origin of wording and content traceable, their use is documented in table~\ref{tab:AI-Usage}. All AI-generated content was reviewed by me; I bear full responsibility for the content of this thesis.
+% Optional, if chat logs are documented (uncomment the section below):
+% Selected chat logs are reproduced in section~\ref{sec:AI-ChatLogs}.
+
+% Optional: additionally mark AI usage in the text with a footnote, e.g.:
+%   ... text.\footnote{Language edited with ChatGPT (OpenAI), 12.03.2026; see table~\ref{tab:AI-Usage}, no.~3.}
+
+{%
+\footnotesize
+\setstretch{1.15}
+\setlength{\tabcolsep}{4pt}
+\urlstyle{same}
+\begin{longtable}{@{}
+    L{\dimexpr0.05\linewidth-2\tabcolsep}
+    L{\dimexpr0.22\linewidth-2\tabcolsep}
+    L{\dimexpr0.18\linewidth-2\tabcolsep}
+    L{\dimexpr0.15\linewidth-2\tabcolsep}
+    L{\dimexpr0.22\linewidth-2\tabcolsep}
+    L{\dimexpr0.18\linewidth-2\tabcolsep}@{}}
+    \caption[Documentation of AI usage.]{Documentation of the AI tools used in this thesis (following the guideline of Leibniz University Hannover).}
+    \label{tab:AI-Usage}\\
+    \toprule
+    \textbf{No.} & \textbf{AI tool} & \textbf{Purpose} & \textbf{Affected part(s) of the thesis} & \textbf{Date of use \& prompt} & \textbf{Remarks} \\
+    \midrule
+    \endfirsthead
+    \caption[]{(continued) Documentation of the AI tools used in this thesis.}\\
+    \toprule
+    \textbf{No.} & \textbf{AI tool} & \textbf{Purpose} & \textbf{Affected part(s) of the thesis} & \textbf{Date of use \& prompt} & \textbf{Remarks} \\
+    \midrule
+    \endhead
+    \midrule
+    \multicolumn{6}{r@{}}{\textit{Continued on next page}} \\
+    \endfoot
+    \bottomrule
+    \endlastfoot
+    %--- Example rows (replace) -----------------------------------------
+    1 & LUHKI (LUH)\newline \href{https://luhki.uni-hannover.de}{luhki.uni-hannover.de}
+      & Creating an outline
+      & entire thesis
+      & 04.03.2026
+      & Only ideas adopted, heavily modified \\
+    \midrule
+    2 & DeepL (institute licence)\newline \href{https://www.deepl.com}{deepl.com}
+      & Translation of text passages
+      & Chapter 2
+      & 10.03.2026
+      & Translation checked and revised \\
+    \midrule
+    3 & ChatGPT (OpenAI)\newline \href{https://chatgpt.com}{chatgpt.com}
+      & Linguistic and formal revision
+      & Chapter 3, section 3.2
+      & 12.03.2026\newline \enquote{Check the spelling and punctuation in the following section}
+      & Only corrections adopted \\
+    \midrule
+    4 & Claude Code (Anthropic)\newline \href{https://claude.com/claude-code}{claude.com/claude-code}
+      & Programming of evaluation scripts (Python)
+      & Chapter 4, appendix A
+      & 18.03.2026
+      & Code reviewed, tested and adapted \\
+    \midrule
+    5 & Gemini (Google)\newline \href{https://gemini.google.com}{gemini.google.com}
+      & Literature search
+      & Chapter 2, section 2.1
+      & 20.03.2026
+      & Initial overview; sources then checked myself \\
+\end{longtable}%
+}
+
+%=== Chat logs (optional) ===============================
+% Disabled by default. To enable, uncomment the block below
+% (select all lines and remove the comment signs, in Overleaf: Ctrl+/).
+% Create one subsection per chat log and state its number from the table.
+% Put prompts in the 'aiprompt' box and responses in the 'airesponse' box.
+% Long responses may be shortened — mark omissions with [...].
+%
+% Alternatively, include an exported chat log as PDF:
+%   \includepdf[pages=-, scale=0.85, pagecommand={}]{figures/chatlog_no3.pdf}
+%
+% \section{Chat Logs}
+% \label{sec:AI-ChatLogs}
+%
+% The following chat logs supplement the information in table~\ref{tab:AI-Usage}. Longer responses have been shortened; omissions are marked with [\,\dots].
+%
+% \subsection{No. 3: Revision of Section 3.2}
+% \label{sec:AI-Chat-3}
+%
+% \textbf{Tool:} ChatGPT (OpenAI) \quad
+% \textbf{Date:} 12.03.2026
+%
+% \begin{aiprompt}[Prompt 1]
+% Rephrase the following paragraph in a more scientific and precise way without changing its content:
+%
+% \enquote{The rotor blades are heavily loaded at high wind speeds because the forces get bigger and the blades then bend more.}
+% \end{aiprompt}
+%
+% \begin{airesponse}[Response 1]
+% \enquote{With increasing wind speed, the aerodynamic loads on the rotor blades rise, resulting in larger blade deflections and thus increased structural stress.}
+% \end{airesponse}
+%
+% \textit{Adoption:} Wording from response~1 adopted in essence and adapted.
+
+\clearpage

@@ -144,6 +144,31 @@
 \usepackage{multirow}
 \usepackage{multicol}
 
+%=== AI Documentation ==================================
+% Column type and boxes for documenting AI usage (91_ai_documentation.tex)
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable, skins}
+\definecolor{aiaccent}{rgb}{0.0,0.314,0.608}   % LUH blue
+% Prompt box:    \begin{aiprompt}[Title] ... \end{aiprompt}
+\newtcolorbox{aiprompt}[1][Prompt]{%
+    enhanced, breakable, sharp corners,
+    colback=aiaccent!6, colframe=aiaccent, boxrule=0pt, leftrule=2.5pt,
+    left=6pt, right=6pt, top=4pt, bottom=4pt,
+    fonttitle=\bfseries\footnotesize, coltitle=aiaccent, colbacktitle=aiaccent!6,
+    title={#1}, attach title to upper={\par\smallskip}, fontupper=\small,
+    before skip=6pt, after skip=4pt,
+}
+% Response box:  \begin{airesponse}[Title] ... \end{airesponse}
+\newtcolorbox{airesponse}[1][Response]{%
+    enhanced, breakable, sharp corners,
+    colback=black!3, colframe=black!45, boxrule=0pt, leftrule=2.5pt,
+    left=6pt, right=6pt, top=4pt, bottom=4pt,
+    fonttitle=\bfseries\footnotesize, coltitle=black!60,
+    title={#1}, attach title to upper={\par\smallskip}, fontupper=\small,
+    before skip=4pt, after skip=10pt,
+}
+
 %=== Graphics ==========================================
 \usepackage{graphicx}
 \graphicspath{{figures/}}   % Image path

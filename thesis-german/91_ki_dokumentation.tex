@@ -1,0 +1,134 @@
+% Dokumentation des KI-Einsatzes (Anhang)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Grundlage: LUH-Handreichung „KI-Tools richtig dokumentieren"
+% https://www.uni-hannover.de/fileadmin/luh/content/online-lehre/LUH_Handreichung_Dokumentation_KI-Einsatz.pdf
+%
+% WICHTIG: Die zuständige Betreuerin bzw. der zuständige Betreuer legt fest,
+% wie der KI-Einsatz zu dokumentieren ist (z. B. ob Prompts oder Chat-Verläufe
+% anzugeben sind). Vorab abstimmen!
+%
+% Wurden KI-Tools NICHT verwendet:
+%   - \input{91_ki_dokumentation.tex} in 00_main.tex auskommentieren
+%   - den Verweis auf diesen Anhang in 03_erklaerungen.tex entfernen
+%
+% Spalten der Tabelle (nach LUH-Handreichung):
+%   Lfd. Nr.          fortlaufende Nummer (zum Verweisen aus Fußnoten/Chat-Verläufen)
+%   KI-Tool           Name des Tools und Anbieter, inkl. Link (Modell/Version, falls bekannt)
+%   Einsatzform       kurze Einordnung, wofür das Tool verwendet wurde
+%   Betroffene Teile  welche Abschnitte oder ganzen Kapitel bearbeitet wurden
+%   Datum & Prompt    Nutzungsdatum; Prompt je nach Einsatzform/Vorgabe der Lehrperson
+%   Anmerkungen       Verarbeitungstiefe oder Hinweis auf ausführlichere Dokumentation
+%
+% Die Zeilen unten sind Beispiele — nicht verwendete Tools löschen, eigene ergänzen.
+%
+% Weiterführende Quellen (aus der Handreichung):
+%   - Universität Basel, Vizerektorat Lehre: „Leitfaden ‚aus KI' zitieren", Juni 2024
+%   - Baresel et al.: „KI-Gebrauch im Studienkontext dokumentieren", 29.11.2024
+%   - Frankfurt UAS: „Lehren, Lernen und Schreiben mit generativen KI-Anwendungen", 11.03.2024
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Dokumentation des KI-Einsatzes}
+\label{cha:KI-Dokumentation}
+
+In dieser Arbeit wurden KI-Tools als Hilfsmittel eingesetzt. Damit nachvollziehbar bleibt, woher Formulierungen und Inhalte stammen, ist der Einsatz in Tabelle~\ref{tab:KI-Einsatz} dokumentiert. Sämtliche KI-generierten Inhalte wurden von mir geprüft; die Verantwortung für den Inhalt der Arbeit liegt vollständig bei mir.
+% Optional, wenn Chat-Verläufe dokumentiert werden (Abschnitt unten einkommentieren):
+% Ausgewählte Chat-Verläufe sind in Abschnitt~\ref{sec:KI-Chatverlaeufe} wiedergegeben.
+
+% Optional: KI-Einsatz zusätzlich im Fließtext per Fußnote kennzeichnen, z. B.:
+%   ... Text.\footnote{Sprachlich überarbeitet mit ChatGPT (OpenAI), 12.03.2026; s. Tabelle~\ref{tab:KI-Einsatz}, Lfd.~Nr.~3.}
+
+{%
+\footnotesize
+\setstretch{1.15}
+\setlength{\tabcolsep}{4pt}
+\urlstyle{same}
+\begin{longtable}{@{}
+    L{\dimexpr0.05\linewidth-2\tabcolsep}
+    L{\dimexpr0.22\linewidth-2\tabcolsep}
+    L{\dimexpr0.18\linewidth-2\tabcolsep}
+    L{\dimexpr0.15\linewidth-2\tabcolsep}
+    L{\dimexpr0.22\linewidth-2\tabcolsep}
+    L{\dimexpr0.18\linewidth-2\tabcolsep}@{}}
+    \caption[Dokumentation des KI-Einsatzes.]{Dokumentation des Einsatzes von KI-Tools in dieser Arbeit (nach der Handreichung der Leibniz Universität Hannover).}
+    \label{tab:KI-Einsatz}\\
+    \toprule
+    \textbf{Lfd. Nr.} & \textbf{KI-Tool} & \textbf{Einsatzform} & \textbf{Betroffene(r) Teil(e) der Arbeit} & \textbf{Nutzungsdatum \& Prompt} & \textbf{Anmerkungen} \\
+    \midrule
+    \endfirsthead
+    \caption[]{(Fortsetzung) Dokumentation des Einsatzes von KI-Tools in dieser Arbeit.}\\
+    \toprule
+    \textbf{Lfd. Nr.} & \textbf{KI-Tool} & \textbf{Einsatzform} & \textbf{Betroffene(r) Teil(e) der Arbeit} & \textbf{Nutzungsdatum \& Prompt} & \textbf{Anmerkungen} \\
+    \midrule
+    \endhead
+    \midrule
+    \multicolumn{6}{r@{}}{\textit{Fortsetzung auf der nächsten Seite}} \\
+    \endfoot
+    \bottomrule
+    \endlastfoot
+    %--- Beispielzeilen (ersetzen) ---------------------------------------
+    1 & LUHKI (LUH)\newline \href{https://luhki.uni-hannover.de}{luhki.uni-hannover.de}
+      & Erstellung einer Gliederung
+      & ganze Arbeit
+      & 04.03.2026
+      & Nur Ideen übernommen, stark verändert \\
+    \midrule
+    2 & DeepL (Institutslizenz)\newline \href{https://www.deepl.com}{deepl.com}
+      & Übersetzung von Textpassagen
+      & Kapitel 2
+      & 10.03.2026
+      & Übersetzung geprüft und überarbeitet \\
+    \midrule
+    3 & ChatGPT (OpenAI)\newline \href{https://chatgpt.com}{chatgpt.com}
+      & Sprachlich-formale Überarbeitung
+      & Kapitel 3, Abschnitt 3.2
+      & 12.03.2026\newline \enquote{Überprüfe die Rechtschreibung und Zeichensetzung im folgenden Abschnitt}
+      & Nur Korrekturen übernommen \\
+    \midrule
+    4 & Claude Code (Anthropic)\newline \href{https://claude.com/claude-code}{claude.com/claude-code}
+      & Programmierung von Auswerteskripten (Python)
+      & Kapitel 4, Anhang A
+      & 18.03.2026
+      & Code geprüft, getestet und angepasst \\
+    \midrule
+    5 & Gemini (Google)\newline \href{https://gemini.google.com}{gemini.google.com}
+      & Literaturrecherche
+      & Kapitel 2, Abschnitt 2.1
+      & 20.03.2026
+      & Erster Überblick; Quellen anschließend selbst geprüft \\
+\end{longtable}%
+}
+
+%=== Chat-Verläufe (optional) ===========================
+% Standardmäßig deaktiviert. Zum Aktivieren den folgenden Block einkommentieren
+% (alle Zeilen markieren und Kommentarzeichen entfernen, in Overleaf: Strg+/).
+% Für jeden Verlauf einen Unterabschnitt anlegen und die Lfd. Nr. aus der Tabelle angeben.
+% Prompts in die Box 'kiprompt', Antworten in die Box 'kiantwort' setzen.
+% Längere Antworten dürfen gekürzt werden — Kürzungen mit [...] kennzeichnen.
+%
+% Alternativ einen exportierten Chat-Verlauf als PDF einbinden:
+%   \includepdf[pages=-, scale=0.85, pagecommand={}]{figures/chatverlauf_nr3.pdf}
+%
+% \section{Chat-Verläufe}
+% \label{sec:KI-Chatverlaeufe}
+%
+% Die folgenden Chat-Verläufe ergänzen die Angaben in Tabelle~\ref{tab:KI-Einsatz}. Längere Antworten sind gekürzt; Kürzungen sind mit [\,\dots] gekennzeichnet.
+%
+% \subsection{Lfd. Nr. 3: Überarbeitung von Abschnitt 3.2}
+% \label{sec:KI-Chat-3}
+%
+% \textbf{Tool:} ChatGPT (OpenAI) \quad
+% \textbf{Datum:} 12.03.2026
+%
+% \begin{kiprompt}[Prompt 1]
+% Formuliere den folgenden Absatz wissenschaftlich und präziser, ohne den Inhalt zu verändern:
+%
+% \enquote{Die Rotorblätter werden bei hohen Windgeschwindigkeiten stark belastet, weil die Kräfte größer werden und sich die Blätter dann mehr verbiegen.}
+% \end{kiprompt}
+%
+% \begin{kiantwort}[Antwort 1]
+% \enquote{Mit zunehmender Windgeschwindigkeit steigen die aerodynamischen Lasten auf die Rotorblätter, was zu größeren Blattdurchbiegungen und damit zu einer erhöhten strukturellen Beanspruchung führt.}
+% \end{kiantwort}
+%
+% \textit{Übernahme:} Formulierung aus Antwort~1 sinngemäß übernommen und angepasst.
+
+\clearpage
